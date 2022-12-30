@@ -1,0 +1,31 @@
+.about__container {
+    display: grid;
+    grid-template-columns: 35% 50%;
+    gap: 15%;
+    right: 40px
+}
+
+.about__me {
+    width: 50%;
+    aspect-ratio: 1/1;
+    border-radius: 2rem;
+    background: linear-gradient(
+        45deg, 
+        transparent, 
+        var(--color-primary), 
+        transparent
+    );
+    display: grid;
+    place-items: center;
+}
+
+.about__me-image {
+    border-radius: 2;
+    overflow: hidden;
+    transform: rotate(10deg);
+    transition: var(--transition);
+}
+
+.about__me-image:hover {
+    transform: rotate(0);
+}
