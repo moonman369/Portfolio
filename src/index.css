@@ -37,7 +37,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-white);
-    background-image: url(../src/assets/bg_texture.png);
+    background-image: url(../src/assets/bg-texture.png);
 }
 
 /* =================== GENERAL STYLES ==================== */
