@@ -11,13 +11,13 @@ const About = () => {
       <h5>Get To Know</h5>
       <h2>About me</h2>
       
-      <div className="container about_container">
+      <div className="container about__container">
         <div className="about__me">
           <div className="about__me-image">
             <img src={ABT} alt="About Me" />
           </div>
         </div>
-        
+
         <div className="about__content">
           <div className="about__cards">
             <article className='about__card'>
@@ -25,11 +25,13 @@ const About = () => {
               <h5>Experience</h5>
               <small>3+ years Work Ex</small>
             </article>
+
             <article className='about__card'>
               <FiUsers className='about__icon'/>
               <h5>Clients</h5>
-              <small>300+ Clients Worldwide</small>
+              <small>300+ Worldwide</small>
             </article>
+
             <article className='about__card'>
               <VscFolderLibrary className='about__icon'/>
               <h5>Projects</h5>
@@ -38,7 +40,7 @@ const About = () => {
           </div>
 
           <p>
-          I am Ayan Maiti, a Final Year, Electrical Engineering student (Batch 2023). I have worked as a Blockchain Developer Intern at W3Dev Private Limited for four(4) months. I have an in-depth understanding of the blockchain development and its related concepts.
+            I am Ayan Maiti, a Final Year, Electrical Engineering student (Batch 2023). I have worked as a Blockchain Developer Intern at W3Dev Private Limited for four(4) months. I have an in-depth understanding of the blockchain development and its related concepts.
           </p>
 
           <a href='#contact' className='btn btn-primary'>Let's Talk</a>
