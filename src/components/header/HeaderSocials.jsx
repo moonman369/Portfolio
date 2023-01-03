@@ -1,4 +1,5 @@
 import React from 'react'
+import './header.css'
 import {BsLinkedin} from 'react-icons/bs'
 import {FaGithub} from 'react-icons/fa'
 import {SiLeetcode} from 'react-icons/si'
