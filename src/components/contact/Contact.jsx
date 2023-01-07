@@ -1,6 +1,6 @@
 import React from 'react'
 import './contact.css'
-import {MdOutlineMail} from 'react-icons/md'
+import {AiOutlineMail} from 'react-icons/ai'
 import {FaTelegramPlane} from 'react-icons/fa'
 import {FaWhatsapp} from 'react-icons/fa'
 
@@ -13,7 +13,7 @@ const Contact = () => {
       <div className="container contact_container">
         <div className="contact__options">
           <article className='contact__option'>
-            <MdOutlineMail/>
+            <AiOutlineMail/>
             <h4>Email</h4>
             <h5>mightyayan369@gmail.com</h5>
             <a href="mailto:mightyayan369@gmail.com" target='_blank'>Send a message</a>
