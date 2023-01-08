@@ -8,6 +8,8 @@ import Portfolio from './components/portfolio/Portfolio'
 import Testimonials from './components/testimonials/Testimonials'
 import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
+import NotificationContainer from 'react-notifications/lib/NotificationContainer'
+import 'react-notifications/lib/notifications.css';
 
 
 const App = () => {
@@ -22,6 +24,7 @@ const App = () => {
         <Testimonials />
         <Contact />
         <Footer />
+        <NotificationContainer />
     </div>
   )
 }

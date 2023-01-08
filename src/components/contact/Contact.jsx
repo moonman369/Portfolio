@@ -1,20 +1,29 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import emailjs from 'emailjs-com'
 import './contact.css'
 import {TfiEmail} from 'react-icons/tfi'
 import {FaTelegramPlane} from 'react-icons/fa'
 import {FaWhatsapp} from 'react-icons/fa'
+import { NotificationManager } from 'react-notifications'
 
 const Contact = () => {
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [msg, setMsg] = useState('')
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm('service_m61baic', 'template_9nxzoai', form.current, 'yrdLNwbctkqA0TVRm')
       .then((result) => {
-          console.log(result.text);
+          // console.log(result);
+          if (result.status === 200) {
+            NotificationManager.success('Message sent successfully')
+          }
+          setName('')
+          setEmail('')
+          setMsg('')
       }, (error) => {
           console.log(error.text);
       });
@@ -49,9 +58,15 @@ const Contact = () => {
         </div>
         {/* END OF CONTACT OPTIONS */}
         <form ref={form} onSubmit={sendEmail}>
-          <input type="text" name="name" placeholder='Your Full Name' required />
-          <input type="email" name='email' placeholder='Your Email' required />
-          <textarea name="message" placeholder='Your Message' rows="7"></textarea>
+          <input type="text" name="name" value={name} onChange={(e) => {
+            setName(e.target.value)
+          }} placeholder='Your Full Name' required />
+          <input type="email" name='email' value={email} onChange={(e) => {
+            setEmail(e.target.value)
+          }} placeholder='Your Email' required />
+          <textarea name="message" value={msg} onChange={(e) => {
+            setMsg(e.target.value)
+          }} placeholder='Your Message' rows="7"></textarea>
           <button type="submit" className='btn btn-primary'>Send Message</button>
         </form>
       </div>
