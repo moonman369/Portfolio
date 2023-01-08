@@ -70,6 +70,6 @@
 @media screen and (max-width: 600px) {
     .services__container {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 }
