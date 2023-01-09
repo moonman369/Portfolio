@@ -1,21 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './services.css';
 import {GoCheck} from 'react-icons/go'
 import axios from 'axios';
 
-const Services = () => {
+const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${process.env.LEETCODE_USERNAME}`
+// const DAILY_CODING_CHALLENGE_QUERY = `
+//   query userProblemsSolved($username: String!) {
+//     allQuestionsCount {
+//       difficulty
+//       count
+//     }
+//     matchedUser(username: $username) {
+//       problemsSolvedBeatsStats {
+//         difficulty
+//         percentage
+//       }
+//       submitStatsGlobal {
+//         acSubmissionNum {
+//           difficulty
+//           count
+//         }
+//       }
+//     }
+//   }`
 
-  axios.post(
-    'https://leetcode.com/graphql/',
-    {"query":"\n    query userProblemsSolved($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    problemsSolvedBeatsStats {\n      difficulty\n      percentage\n    }\n    submitStatsGlobal {\n      acSubmissionNum {\n        difficulty\n        count\n      }\n    }\n  }\n}\n    ","variables":{"username":"moonman369"}},
-    {
+
+const fetchLeetcodeProfile = async () => {
+    console.log(`Fetching daily coding challenge from LeetCode API.`)
+    const res = await axios.get(LEETCODE_API_ENDPOINT, {
       headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  ).then(data => console.log(data))
+        'Content-Type': 'application/json'
+      }
+    })
+    return res
+}
 
-  
+const Services = () => {
+  const [test, setTest] = useState('')
+  fetchLeetcodeProfile().then(res => {
+    console.log(res)
+    // setTest(JSON.stringify(res.data))
+  })
   
   return (
     <section id='services'>
@@ -39,7 +64,7 @@ const Services = () => {
             </li>
             <li>
               <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <p>{test}</p>
             </li>
             <li>
               <GoCheck className='service__list-icon'/>
