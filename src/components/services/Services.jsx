@@ -1,8 +1,22 @@
 import React from 'react'
 import './services.css';
 import {GoCheck} from 'react-icons/go'
+import axios from 'axios';
 
 const Services = () => {
+
+  axios.post(
+    'https://leetcode.com/graphql/',
+    {"query":"\n    query userProblemsSolved($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    problemsSolvedBeatsStats {\n      difficulty\n      percentage\n    }\n    submitStatsGlobal {\n      acSubmissionNum {\n        difficulty\n        count\n      }\n    }\n  }\n}\n    ","variables":{"username":"moonman369"}},
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then(data => console.log(data))
+
+  
+  
   return (
     <section id='services'>
       <h5>What I Offer</h5>
