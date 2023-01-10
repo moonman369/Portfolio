@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import './services.css';
+import React, { useEffect, useState } from 'react'
+import './stats.css';
 import {GoCheck} from 'react-icons/go'
 import axios from 'axios';
 
-const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${process.env.LEETCODE_USERNAME}`
+const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/moonman369`
 // const endpt = 'http://localhost:8000/graphql'
 // const QUERY = `
 //   query userProblemsSolved($username: String!) {
@@ -51,103 +51,102 @@ const fetchLeetcodeProfile = async () => {
     return res
 }
 
-const Services = () => {
-  const [test, setTest] = useState('')
-  fetchLeetcodeProfile().then(res => {
-    console.log(res)
-    // setTest(JSON.stringify(res.data))
-  })
-  
+const Stats = () => {
+  const [leetcodeStats, setLeetcodeStats] = useState(null)
+  // const [easySolved, setEasySolved] = useState(0)
+  // const [mediumTotal, setMediumTotal] = useState(0)
+  // const [mediumSolved, setMediumSolved] = useState(0)
+  // const [hardTotal, setHardTotal] = useState(0)
+  // const [hardSolved, setHardSolved] = useState(0)
+  // const [rank, setRank] = useState(0)
+  useEffect(() => {
+    fetchLeetcodeProfile().then(res => {
+      console.log(res)
+      // setTest(JSON.stringify(res.data))
+      setLeetcodeStats(res.data)
+    })
+  }, [])
+  console.log(leetcodeStats)
   return (
-    <section id='services'>
-      <h5>What I Offer</h5>
-      <h2>Services</h2>
+    <section id='stats'>
+      <h5>Platforms I use</h5>
+      <h2>My Stats</h2>
 
-      <div className="container services__container">
-        <article className='service'>
-          <div className="service__head">
-            <h3>UI/UX Design</h3>
+      <div className="container stats__container">
+        <article className='stat'>
+          <div className="stat__head">
+            <h3>Leetcode Stats</h3>
           </div>
 
-          <ul className='service__list'>
-            <li>
-              <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='service__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-          </ul>
+          <div className="stat__list">
+            <span className='stat__key-easy'>Easy </span>
+            <span className='stat_val'>{leetcodeStats?.easySolved} / {leetcodeStats?.totalEasy}</span>
+          </div>
+          <div className="stat__list">
+            <span className='stat__key-medi'>Medium </span>
+            <span className='stat_val'>{leetcodeStats?.mediumSolved} / {leetcodeStats?.totalMedium}</span>
+          </div>
+          <div className="stat__list">
+            <span className='stat__key-hard'>Hard </span>
+            <span className='stat_val'>{leetcodeStats?.hardSolved} / {leetcodeStats?.totalHard}</span>
+          </div>
         </article>
         {/* END OF UI/UX */}
 
-        <article className='service'>
-          <div className="service__head">
+        <article className='stat'>
+          <div className="stat__head">
             <h3>Web Development</h3>
           </div>
 
-          <ul className='service__list'>
+          <ul className='stat__list'>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
           </ul>
         </article>
         {/* END OF WEB D */}
 
-        <article className='service'>
-          <div className="service__head">
+        <article className='stat'>
+          <div className="stat__head">
             <h3>Web3 and Blockchain</h3>
           </div>
 
-          <ul className='service__list'>
+          <ul className='stat__list'>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
             <li>
-              <GoCheck className='service__list-icon'/>
+              <GoCheck className='stat__list-icon'/>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </li>
           </ul>
@@ -159,4 +158,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Stats
