@@ -4,7 +4,8 @@ import {GoCheck} from 'react-icons/go'
 import axios from 'axios';
 
 const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${process.env.LEETCODE_USERNAME}`
-// const DAILY_CODING_CHALLENGE_QUERY = `
+// const endpt = 'http://localhost:8000/graphql'
+// const QUERY = `
 //   query userProblemsSolved($username: String!) {
 //     allQuestionsCount {
 //       difficulty
@@ -25,6 +26,15 @@ const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${proces
 //   }`
 
 
+
+// const VARIABLES = {variables: 'moonman369'}
+// const body = {"query":"\n    query userProblemsSolved($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    problemsSolvedBeatsStats {\n      difficulty\n      percentage\n    }\n    submitStatsGlobal {\n      acSubmissionNum {\n        difficulty\n        count\n      }\n    }\n  }\n}\n    ","variables":{"username":"moonman369"}}
+// {
+//   query: QUERY,
+//   variables: VARIABLES
+// }
+
+
 const fetchLeetcodeProfile = async () => {
     console.log(`Fetching daily coding challenge from LeetCode API.`)
     const res = await axios.get(LEETCODE_API_ENDPOINT, {
@@ -32,6 +42,12 @@ const fetchLeetcodeProfile = async () => {
         'Content-Type': 'application/json'
       }
     })
+    // const res = await axios.post(endpt, body, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
+    // })
     return res
 }
 
