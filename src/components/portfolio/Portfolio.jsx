@@ -41,14 +41,14 @@ const data = [
     image: img5,
     title: 'Dicey - An Interactive Game of Chance',
     github: 'https://github.com/moonman369/Dicey',
-    demo: 'https://github.com'
+    demo: 'https://moonman369.github.io/Dicey/'
   },
   {
     id: 6,
     image: img6,
     title: 'Guess What - A Fun and Simple Guessing Game',
     github: 'https://github.com/moonman369/Guess-What',
-    demo: 'https://github.com'
+    demo: 'https://moonman369.github.io/Guess-What/'
   },
   
 ]
