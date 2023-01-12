@@ -80,7 +80,7 @@ progress::-webkit-progress-value {
 }
 
 progress.stat__progress-easy::-webkit-progress-bar{
-    background: rgb(1, 53, 21);
+    background: rgb(5, 46, 21);
 }
 progress.stat__progress-easy::-webkit-progress-value{
     background: rgb(11, 201, 83);
