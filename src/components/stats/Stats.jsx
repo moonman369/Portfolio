@@ -85,7 +85,7 @@ const Stats = () => {
           </div>
           <div className="stat__list">
             <span className='stat__key stat__key-medi'>Medium</span>
-            <span className='stat_val'>{leetcodeStats?.mediumSolved} / {leetcodeStats?.totalMedium + 20}</span>
+            <span className='stat_val'>{leetcodeStats?.mediumSolved + 20} / {leetcodeStats?.totalMedium}</span>
             <progress className='stat__progress stat__progress-medi' value={leetcodeStats?.mediumSolved + 20} max={leetcodeStats?.totalMedium} />
           </div>
           <div className="stat__list">
