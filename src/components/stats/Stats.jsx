@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import './stats.css';
 import {GoCheck} from 'react-icons/go'
 import axios from 'axios';
+import { CircularProgressbar,  buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+
 
 const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/moonman369`
 // const endpt = 'http://localhost:8000/graphql'
@@ -76,6 +80,20 @@ const Stats = () => {
         <article className='stat'>
           <div className="stat__head">
             <h3>Leetcode Stats</h3>
+          </div>
+
+          <div className="stat_list">
+          <CircularProgressbar 
+            className='stat__circprogress' 
+            value={leetcodeStats?.totalSolved} 
+            maxValue={leetcodeStats?.totalQuestions} 
+            text={`${(leetcodeStats?.totalSolved * 100 / leetcodeStats?.totalQuestions).toFixed(2)} %`}
+            styles={buildStyles ({
+              pathColor: `rgb(171, 103, 255)`,
+              trailColor: `rgb(52, 24, 87)`
+            })}
+          />
+            <span className='stat__desc'>Total Solved</span>
           </div>
 
           <div className="stat__list">

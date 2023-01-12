@@ -3,6 +3,7 @@ import './nav.css'
 import {AiOutlineHome, AiOutlineUser} from 'react-icons/ai'
 import {BiBook, BiMessageSquareDetail, BiCodeAlt} from 'react-icons/bi'
 import {RiServiceLine} from 'react-icons/ri'
+import { Link, scroll, animateScroll } from 'react-scroll'
 import {IoIosStats} from 'react-icons/io'
 
 const Nav = () => {
@@ -13,6 +14,7 @@ const Nav = () => {
     // console.log(window.history)
     // window.history.replaceState(null, '', '#')
     // window.history.back()
+    // console.log(window.location)
   }
 
   return (
