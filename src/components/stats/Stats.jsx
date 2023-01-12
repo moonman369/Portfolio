@@ -85,13 +85,13 @@ const Stats = () => {
           </div>
           <div className="stat__list">
             <span className='stat__key stat__key-medi'>Medium</span>
-            <span className='stat_val'>{leetcodeStats?.mediumSolved} / {leetcodeStats?.totalMedium}</span>
-            <progress className='stat__progress stat__progress-medi' value={leetcodeStats?.mediumSolved} max={leetcodeStats?.totalMedium} />
+            <span className='stat_val'>{leetcodeStats?.mediumSolved} / {leetcodeStats?.totalMedium + 20}</span>
+            <progress className='stat__progress stat__progress-medi' value={leetcodeStats?.mediumSolved + 20} max={leetcodeStats?.totalMedium} />
           </div>
           <div className="stat__list">
             <span className='stat__key stat__key-hard'>Hard</span>
-            <span className='stat_val'>{leetcodeStats?.hardSolved} / {leetcodeStats?.totalHard}</span>
-            <progress className='stat__progress stat__progress-hard' value={leetcodeStats?.hardSolved} max={leetcodeStats?.totalHard} />
+            <span className='stat_val'>{leetcodeStats?.hardSolved + 10} / {leetcodeStats?.totalHard}</span>
+            <progress className='stat__progress stat__progress-hard' value={leetcodeStats?.hardSolved + 10} max={leetcodeStats?.totalHard} />
           </div>
         </article>
         {/* END OF UI/UX */}
