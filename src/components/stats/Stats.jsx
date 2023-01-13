@@ -55,6 +55,12 @@ const fetchLeetcodeProfile = async () => {
     return res
 }
 
+const fetchGitHubProfile = async () => {
+  const res = await axios.get('https://api.github.com/repos/moonman369/Portfolio/commits')
+  // Use page param
+  return res
+}
+
 const Stats = () => {
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   // const [easySolved, setEasySolved] = useState(0)
@@ -68,6 +74,10 @@ const Stats = () => {
       console.log(res)
       // setTest(JSON.stringify(res.data))
       setLeetcodeStats(res.data)
+    })
+
+    fetchGitHubProfile().then(res => {
+      console.log(res)
     })
   }, [])
   console.log(leetcodeStats)
@@ -84,16 +94,24 @@ const Stats = () => {
 
           <div className="stat_list">
           <CircularProgressbar 
-            className='stat__circprogress' 
+            vi
+            className='stat__circprogress'
             value={leetcodeStats?.totalSolved} 
             maxValue={leetcodeStats?.totalQuestions} 
+            strokeWidth = {6}
             text={`${(leetcodeStats?.totalSolved * 100 / leetcodeStats?.totalQuestions).toFixed(2)} %`}
             styles={buildStyles ({
-              pathColor: `rgb(171, 103, 255)`,
-              trailColor: `rgb(52, 24, 87)`
+              pathColor: `#4db5ff`,
+              trailColor: `rgb(76, 79, 85)`,
+              textSize: `19px`,
+              textColor: ``
             })}
           />
-            <span className='stat__desc'>Total Solved</span>
+            <span className='stat__desc'>Solved&nbsp;&nbsp;&nbsp;
+            {/* <div className='stat__key highlight'>
+              {leetcodeStats?.totalSolved} / {leetcodeStats?.totalQuestions}
+              </div> */}
+            </span>
           </div>
 
           <div className="stat__list">

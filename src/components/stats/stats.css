@@ -64,19 +64,24 @@
     margin-right: 3.7rem;
 }
 
-
 .stat__circprogress {
     align-self: left;
     margin-top: 1.3rem;
     width: 100px;
-    height: 100px;
+    height: 95px;
 }
 
 .stat__desc {
     display: flex;
     align-content: space-around;
-    justify-content: space-around;
-    margin-top: 1rem;
+    justify-content: center;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.highlight {
+    background: var(--color-primary);
+    padding: 1.5px 3px 0.5px 3px;
 }
 
 
