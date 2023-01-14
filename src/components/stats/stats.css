@@ -23,12 +23,21 @@
     padding: 2rem;
     border-radius: 0 0 2rem 2rem;
     box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
 }
 
 .stat__head h3 {
     color: var(--color-bg);
     font-size: 1rem;
     text-align: center;
+    margin-top: 0.35rem;
+    padding-left: 0.35rem;
+}
+
+.stat__head img {
+    width: 35px;
+    height: 35px;
 }
 
 .stat__list {
@@ -128,6 +137,7 @@ progress.stat__progress-hard::-webkit-progress-value {
 .stat__list-icon {
     color: var(--color-primary);
     margin-top: 2px;
+    font-size: 1.7rem;
 }
 
 .stat__list p {

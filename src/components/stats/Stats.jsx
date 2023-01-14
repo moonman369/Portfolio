@@ -1,42 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import './stats.css';
 import {GoCheck} from 'react-icons/go'
+import {BiGitCommit} from 'react-icons/bi'
 import axios from 'axios';
 import { CircularProgressbar,  buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { Octokit } from 'octokit';
 
 
+const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
+console.log(REACT_APP_GITHUB_PAT, REACT_APP_USERNAME)
 
-const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/moonman369`
-// const endpt = 'http://localhost:8000/graphql'
-// const QUERY = `
-//   query userProblemsSolved($username: String!) {
-//     allQuestionsCount {
-//       difficulty
-//       count
-//     }
-//     matchedUser(username: $username) {
-//       problemsSolvedBeatsStats {
-//         difficulty
-//         percentage
-//       }
-//       submitStatsGlobal {
-//         acSubmissionNum {
-//           difficulty
-//           count
-//         }
-//       }
-//     }
-//   }`
-
-
-
-// const VARIABLES = {variables: 'moonman369'}
-// const body = {"query":"\n    query userProblemsSolved($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    problemsSolvedBeatsStats {\n      difficulty\n      percentage\n    }\n    submitStatsGlobal {\n      acSubmissionNum {\n        difficulty\n        count\n      }\n    }\n  }\n}\n    ","variables":{"username":"moonman369"}}
-// {
-//   query: QUERY,
-//   variables: VARIABLES
-// }
+const octokit = new Octokit({
+  auth: REACT_APP_GITHUB_PAT
+})
+const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${REACT_APP_USERNAME}`
 
 
 const fetchLeetcodeProfile = async () => {
@@ -46,41 +24,57 @@ const fetchLeetcodeProfile = async () => {
         'Content-Type': 'application/json'
       }
     })
-    // const res = await axios.post(endpt, body, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*'
-    //   }
-    // })
     return res
 }
 
 const fetchGitHubProfile = async () => {
-  const res = await axios.get('https://api.github.com/repos/moonman369/Portfolio/commits')
-  // Use page param
-  return res
+  let result = {
+    totalCommits: 0,
+    totalStars: 0,
+    totalPRs: 0
+  }
+
+
+  let { data } = await octokit.request(`GET /users/${REACT_APP_USERNAME}/repos?per_page=300`)
+  let repos = data
+
+  for (let repo of repos) {
+    result.totalStars += repo.stargazers_count
+
+    let res = await octokit.request(`GET /repos/${REACT_APP_USERNAME}/${repo.name}/pulls?state=all`)
+    result.totalPRs += res.data.length
+
+    const {data} = await octokit.request(`GET /repos/${REACT_APP_USERNAME}/${repo.name}/commits?per_page=300`)
+    for (let comm of data) {
+      if (comm?.author?.login === `${REACT_APP_USERNAME}`) {
+        result.totalCommits += 1
+      }
+    }
+  }
+
+  result.totalPRs += (await octokit.request('GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all')).data.length + (await octokit.request('GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all')).data.length
+
+  return result
 }
 
 const Stats = () => {
   const [leetcodeStats, setLeetcodeStats] = useState(null)
-  // const [easySolved, setEasySolved] = useState(0)
-  // const [mediumTotal, setMediumTotal] = useState(0)
-  // const [mediumSolved, setMediumSolved] = useState(0)
-  // const [hardTotal, setHardTotal] = useState(0)
-  // const [hardSolved, setHardSolved] = useState(0)
-  // const [rank, setRank] = useState(0)
+
+  const [gitHubStats, setgitHubStats] = useState(null)
+  
   useEffect(() => {
     fetchLeetcodeProfile().then(res => {
-      console.log(res)
+      // console.log(res)
       // setTest(JSON.stringify(res.data))
       setLeetcodeStats(res.data)
     })
 
     fetchGitHubProfile().then(res => {
       console.log(res)
+      setgitHubStats(res)
     })
   }, [])
-  console.log(leetcodeStats)
+  // console.log(leetcodeStats)
   return (
     <section id='stats'>
       <h5>Platforms I use</h5>
@@ -89,22 +83,22 @@ const Stats = () => {
       <div className="container stats__container">
         <article className='stat'>
           <div className="stat__head">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="Leetcode"  />
             <h3>Leetcode Stats</h3>
           </div>
 
           <div className="stat_list">
           <CircularProgressbar 
-            vi
             className='stat__circprogress'
             value={leetcodeStats?.totalSolved} 
             maxValue={leetcodeStats?.totalQuestions} 
             strokeWidth = {6}
             text={`${(leetcodeStats?.totalSolved * 100 / leetcodeStats?.totalQuestions).toFixed(2)} %`}
             styles={buildStyles ({
-              pathColor: `#4db5ff`,
-              trailColor: `rgb(76, 79, 85)`,
+              pathColor: `rgb(121, 255, 244)`,
+              trailColor: `rgb(85, 85, 85)`,
               textSize: `19px`,
-              textColor: ``
+              textColor: `#4db5ff`
             })}
           />
             <span className='stat__desc'>Solved&nbsp;&nbsp;&nbsp;
@@ -134,29 +128,13 @@ const Stats = () => {
 
         <article className='stat'>
           <div className="stat__head">
-            <h3>Web Development</h3>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            <h3>GitHub Stats</h3>
           </div>
 
-          <ul className='stat__list'>
+          <ul className="stat__list">
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits}</p>
             </li>
           </ul>
         </article>
