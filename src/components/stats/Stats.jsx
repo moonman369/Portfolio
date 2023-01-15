@@ -111,7 +111,7 @@ const Stats = () => {
               textColor: `#4db5ff`
             })}
           />
-            <span className='stat__desc'>Solved&nbsp;&nbsp;&nbsp;
+            <span className='stat__desc'>Solved
             {/* <div className='stat__key highlight'>
               {leetcodeStats?.totalSolved} / {leetcodeStats?.totalQuestions}
               </div> */}
