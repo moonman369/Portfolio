@@ -50,6 +50,13 @@
     margin-bottom: 0.8rem;
 }
 
+.stat__list-git {
+    display: flex;
+    padding: 2rem;
+    font-size: medium;
+    gap: 1rem;
+}
+
 .stat__key {
     color: var(--color-bg);
     border-radius: 0.42rem;
@@ -132,15 +139,14 @@ progress.stat__progress-hard::-webkit-progress-value {
     background: rgb(223, 40, 40);
 }
 
-
-
 .stat__list-icon {
     color: var(--color-primary);
-    margin-top: 2px;
+    margin-bottom: 2.5px;
     font-size: 1.7rem;
 }
 
 .stat__list p {
+    margin-top: 1.5px;
     font-size: 0.9rem;
 }
 

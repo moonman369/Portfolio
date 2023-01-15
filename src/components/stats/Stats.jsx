@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './stats.css';
 import {GoCheck} from 'react-icons/go'
-import {BiGitCommit} from 'react-icons/bi'
+import {BiGitCommit, BiGitPullRequest} from 'react-icons/bi'
+import {BsStar} from 'react-icons/bs'
+import {RiGitRepositoryCommitsLine} from  'react-icons/ri'
 import axios from 'axios';
 import { CircularProgressbar,  buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -9,7 +11,6 @@ import { Octokit } from 'octokit';
 
 
 const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
-console.log(REACT_APP_GITHUB_PAT, REACT_APP_USERNAME)
 
 const octokit = new Octokit({
   auth: REACT_APP_GITHUB_PAT
@@ -29,6 +30,7 @@ const fetchLeetcodeProfile = async () => {
 
 const fetchGitHubProfile = async () => {
   let result = {
+    totalRepos: 0,
     totalCommits: 0,
     totalStars: 0,
     totalPRs: 0
@@ -37,6 +39,7 @@ const fetchGitHubProfile = async () => {
 
   let { data } = await octokit.request(`GET /users/${REACT_APP_USERNAME}/repos?per_page=300`)
   let repos = data
+  result.totalRepos += repos.length
 
   for (let repo of repos) {
     result.totalStars += repo.stargazers_count
@@ -132,9 +135,18 @@ const Stats = () => {
             <h3>GitHub Stats</h3>
           </div>
 
-          <ul className="stat__list">
-            <li>
+          <ul className="">
+            <li className='stat__list-git'>
+            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos}</p>
+            </li>
+            <li className='stat__list-git'>
             <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits}</p>
+            </li>
+            <li className='stat__list-git'>
+            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs}</p>
+            </li>
+            <li className='stat__list-git'>
+            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars}</p>
             </li>
           </ul>
         </article>
