@@ -64,7 +64,7 @@ const fetchGitHubProfile = async () => {
 }
 
 const Stats = () => {
-  const [cookies, setCookies] = useCookies(['totalRepos', 'totalCommits', 'totalPRs', 'totalStars'])
+  const [cookies, setCookies] = useCookies(['totalRepos', 0], ['totalCommits', 0], ['totalPRs', 0], ['totalStars', 0])
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   const [gitHubStats, setgitHubStats] = useState(null)
   
