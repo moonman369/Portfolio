@@ -8,6 +8,7 @@ import axios from 'axios';
 import { CircularProgressbar,  buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Octokit } from 'octokit';
+import { useCookies } from 'react-cookie';
 
 
 const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
@@ -17,6 +18,8 @@ const octokit = new Octokit({
 })
 const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${REACT_APP_USERNAME}`
 
+let cookieExpiry = new Date()
+cookieExpiry.setDate(cookieExpiry.getDate() + (30 * 24 * 60 * 60))
 
 const fetchLeetcodeProfile = async () => {
     console.log(`Fetching daily coding challenge from LeetCode API.`)
@@ -61,20 +64,24 @@ const fetchGitHubProfile = async () => {
 }
 
 const Stats = () => {
+  const [cookies, setCookies] = useCookies(['totalRepos', 'totalCommits', 'totalPRs', 'totalStars'])
   const [leetcodeStats, setLeetcodeStats] = useState(null)
-
   const [gitHubStats, setgitHubStats] = useState(null)
   
   useEffect(() => {
     fetchLeetcodeProfile().then(res => {
       // console.log(res)
-      // setTest(JSON.stringify(res.data))
       setLeetcodeStats(res.data)
     })
 
     fetchGitHubProfile().then(res => {
       console.log(res)
       setgitHubStats(res)
+      const { totalRepos, totalCommits, totalPRs, totalStars } = res
+      setCookies('totalRepos', totalRepos, {path: '/', expires: cookieExpiry})
+      setCookies('totalCommits', totalCommits, {path: '/', expires: cookieExpiry})
+      setCookies('totalPRs', totalPRs, {path: '/', expires: cookieExpiry})
+      setCookies('totalStars', totalStars, {path: '/', expires: cookieExpiry})
     })
   }, [])
   // console.log(leetcodeStats)
@@ -137,16 +144,16 @@ const Stats = () => {
 
           <ul className="">
             <li className='stat__list-git'>
-            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos}</p>
+            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos ?? cookies.totalRepos}</p>
             </li>
             <li className='stat__list-git'>
-            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits}</p>
+            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits ?? cookies.totalCommits}</p>
             </li>
             <li className='stat__list-git'>
-            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs}</p>
+            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs ?? cookies.totalPRs}</p>
             </li>
             <li className='stat__list-git'>
-            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars}</p>
+            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars ?? cookies.totalStars}</p>
             </li>
           </ul>
         </article>
