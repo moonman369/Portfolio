@@ -64,7 +64,7 @@ const fetchGitHubProfile = async () => {
 }
 
 const Stats = () => {
-  const [cookies, setCookies] = useCookies(['totalRepos', 0], ['totalCommits', 0], ['totalPRs', 0], ['totalStars', 0])
+  const [cookies, setCookies] = useCookies(['totalRepos', 'totalCommits', 'totalPRs', 'totalStars'])
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   const [gitHubStats, setgitHubStats] = useState(null)
   
@@ -144,16 +144,16 @@ const Stats = () => {
 
           <ul className="">
             <li className='stat__list-git'>
-            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos ?? cookies.totalRepos}</p>
+            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos ?? cookies.totalRepos ?? 32}</p>
             </li>
             <li className='stat__list-git'>
-            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits ?? cookies.totalCommits}</p>
+            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits ?? cookies.totalCommits ?? 490}</p>
             </li>
             <li className='stat__list-git'>
-            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs ?? cookies.totalPRs}</p>
+            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs ?? cookies.totalPRs ?? 51}</p>
             </li>
             <li className='stat__list-git'>
-            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars ?? cookies.totalStars}</p>
+            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars ?? cookies.totalStars ?? 86}</p>
             </li>
           </ul>
         </article>
