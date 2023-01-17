@@ -80,6 +80,22 @@
     margin-right: 3.7rem;
 }
 
+.commits {
+    background: rgb(171, 47, 243);
+}
+
+.prs {
+    background: rgb(255, 169, 56);
+}
+
+.repos {
+    background: rgb(43, 226, 211);
+}
+
+.stars {
+    background: rgb(235, 196, 25);
+}
+
 .stat__circprogress {
     align-self: left;
     margin-top: 1.3rem;

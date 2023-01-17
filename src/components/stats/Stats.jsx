@@ -64,7 +64,7 @@ const fetchGitHubProfile = async () => {
 }
 
 const Stats = () => {
-  const [cookies, setCookies] = useCookies(['totalRepos', 'totalCommits', 'totalPRs', 'totalStars'])
+  const [cookies, setCookies] = useCookies({'totalRepos': 0, 'totalCommits': 0, 'totalPRs': 0, 'totalStars': 0})
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   const [gitHubStats, setgitHubStats] = useState(null)
   
@@ -78,10 +78,10 @@ const Stats = () => {
       console.log(res)
       setgitHubStats(res)
       const { totalRepos, totalCommits, totalPRs, totalStars } = res
-      setCookies('totalRepos', totalRepos, {path: '/', expires: cookieExpiry})
-      setCookies('totalCommits', totalCommits, {path: '/', expires: cookieExpiry})
-      setCookies('totalPRs', totalPRs, {path: '/', expires: cookieExpiry})
-      setCookies('totalStars', totalStars, {path: '/', expires: cookieExpiry})
+      setCookies('totalRepos', totalRepos, {path: '/', expires: cookieExpiry, priority: 'High'})
+      setCookies('totalCommits', totalCommits, {path: '/', expires: cookieExpiry, priority: 'High'})
+      setCookies('totalPRs', totalPRs, {path: '/', expires: cookieExpiry, priority: 'High'})
+      setCookies('totalStars', totalStars, {path: '/', expires: cookieExpiry, priority: 'High'})
     })
   }, [])
   // console.log(leetcodeStats)
@@ -144,16 +144,16 @@ const Stats = () => {
 
           <ul className="">
             <li className='stat__list-git'>
-            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: {gitHubStats?.totalRepos ?? cookies.totalRepos ?? 32}</p>
+            <RiGitRepositoryCommitsLine className='stat__list-icon'/><p>Total Repositories: <span className="stat__key repos">{gitHubStats?.totalRepos ?? cookies?.totalRepos ?? 0}</span></p>
             </li>
             <li className='stat__list-git'>
-            <BiGitCommit className='stat__list-icon'/><p>Total Commits: {gitHubStats?.totalCommits ?? cookies.totalCommits ?? 490}</p>
+            <BiGitCommit className='stat__list-icon'/><p>Total Commits: <span className='stat__key commits'>{gitHubStats?.totalCommits ?? cookies?.totalCommits ?? 0}</span></p>
             </li>
             <li className='stat__list-git'>
-            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: {gitHubStats?.totalPRs ?? cookies.totalPRs ?? 51}</p>
+            <BiGitPullRequest className='stat__list-icon'/><p>Total Pull Requests: <span className='stat__key prs'>{gitHubStats?.totalPRs ?? cookies?.totalPRs ?? 0}</span></p>
             </li>
             <li className='stat__list-git'>
-            <BsStar className='stat__list-icon'/><p>Total Stars: {gitHubStats?.totalStars ?? cookies.totalStars ?? 86}</p>
+            <BsStar className='stat__list-icon'/><p>Total Stars: <span className='stat__key stars'>{gitHubStats?.totalStars ?? cookies?.totalStars ?? 0}</span></p>
             </li>
           </ul>
         </article>
