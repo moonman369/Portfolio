@@ -157,9 +157,7 @@ const Stats = () => {
             <BsStar className='stat__list-icon'/><p>Total Stars: <span className='stat__key stars'>{gitHubStats?.totalStars ?? cookies?.totalStars ?? 0}</span></p>
             </li>
           </ul>
-          <div className="vercel__card">
-          <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=moonman369&theme=radical" alt="GitHub Stats Card" />
-          </div>
+          <img className='vercel__card' src="https://camo.githubusercontent.com/5c6c17871e39850f232c9cb046b3b88a9639a6c39d1131a4dbaac3a35c51d771/687474703a2f2f6769746875622d70726f66696c652d73756d6d6172792d63617264732e76657263656c2e6170702f6170692f63617264732f7265706f732d7065722d6c616e67756167653f757365726e616d653d6d6f6f6e6d616e333639267468656d653d7261646963616c" alt="GitHub Stats Card" />
         </article>
         {/* END OF WEB D */}
 
