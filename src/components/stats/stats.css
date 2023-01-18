@@ -13,8 +13,10 @@
 }
 
 .vercel__card {
-    border-radius: 0 0 2rem 2rem;
-    overflow: hidden;
+    border-radius: 0 0 2.7rem 2rem;
+    padding-top: 2rem;
+    width: calc(101%);
+    overflow: -moz-hidden-unscrollable;
 }
 
 .stat:hover {
@@ -30,6 +32,7 @@
     box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
+    margin-bottom: 1.5rem;
 }
 
 .stat__head h3 {
@@ -57,7 +60,8 @@
 
 .stat__list-git {
     display: flex;
-    padding: 2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
     font-size: medium;
     gap: 1rem;
 }
@@ -85,20 +89,36 @@
     margin-right: 3.7rem;
 }
 
-.commits {
+.repos {
+    background: rgb(43, 226, 211);
+    margin-left: 0.9rem
+}
+.repo-icon {
+    color: rgb(43, 226, 211);
+}
+
+.commits  {
     background: rgb(185, 80, 247);
+    margin-left: 2.3rem
+}
+.commit-icon {
+    color: rgb(185, 80, 247);
 }
 
 .prs {
     background: rgb(255, 169, 56);
+    margin-left: 0.5rem
 }
-
-.repos {
-    background: rgb(43, 226, 211);
+.pr-icon {
+    color: rgb(255, 169, 56);
 }
 
 .stars {
     background: rgb(235, 196, 25);
+    margin-left: 4.4rem
+}
+.star-icon {
+    color: rgb(235, 196, 25);
 }
 
 .stat__circprogress {
@@ -161,9 +181,8 @@ progress.stat__progress-hard::-webkit-progress-value {
 }
 
 .stat__list-icon {
-    color: var(--color-primary);
     margin-bottom: 2.5px;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 .stat__list p {
@@ -192,5 +211,25 @@ progress.stat__progress-hard::-webkit-progress-value {
     .stats__container {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .repos {
+        background: rgb(43, 226, 211);
+        margin-left: 2.5rem
+    }
+
+    .commits  {
+        background: rgb(185, 80, 247);
+        margin-left: 3.9rem
+    }
+    
+    .prs {
+        background: rgb(255, 169, 56);
+        margin-left: 2.1rem
+    }
+
+    .stars {
+        background: rgb(235, 196, 25);
+        margin-left: 6rem
     }
 }
