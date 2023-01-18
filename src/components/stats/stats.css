@@ -12,6 +12,10 @@
     transition: var(--transition);
 }
 
+.vercel__card {
+    border-radius: 0 0 2rem 2rem;
+}
+
 .stat:hover {
     background: transparent;
     border-color: var(--color-primary-variant);
@@ -81,7 +85,7 @@
 }
 
 .commits {
-    background: rgb(171, 47, 243);
+    background: rgb(185, 80, 247);
 }
 
 .prs {

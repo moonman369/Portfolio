@@ -67,6 +67,7 @@ const Stats = () => {
   const [cookies, setCookies] = useCookies({'totalRepos': 0, 'totalCommits': 0, 'totalPRs': 0, 'totalStars': 0})
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   const [gitHubStats, setgitHubStats] = useState(null)
+  const [gitCardSvg, setGitCardSvg] = useState('')
   
   useEffect(() => {
     fetchLeetcodeProfile().then(res => {
@@ -156,6 +157,9 @@ const Stats = () => {
             <BsStar className='stat__list-icon'/><p>Total Stars: <span className='stat__key stars'>{gitHubStats?.totalStars ?? cookies?.totalStars ?? 0}</span></p>
             </li>
           </ul>
+          <div className="vercel__card">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=moonman369&theme=radical" alt="GitHub Stats Card" />
+          </div>
         </article>
         {/* END OF WEB D */}
 
