@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './stats.css';
 import {GoCheck} from 'react-icons/go'
+import {GrCertificate} from 'react-icons/gi'
 import {BiGitCommit, BiGitPullRequest} from 'react-icons/bi'
 import {BsStar} from 'react-icons/bs'
 import {RiGitRepositoryCommitsLine} from  'react-icons/ri'
@@ -163,21 +164,22 @@ const Stats = () => {
 
         <article className='stat'>
           <div className="stat__head">
-            <h3>Web3 and Blockchain</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2258/2258567.png" alt="Certificates" />
+            <h3>Certificates</h3>
           </div>
 
           <ul className='stat__list'>
             <li>
               <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <a href="https://drive.google.com/file/d/1ES_DxKzGUVjq6SHY50Wmw2rGZKP_2AJK/view?usp=sharing" target='_blank'>Internship Completion at W3 Dev Private Limited</a>
             </li>
             <li>
               <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <a href='https://drive.google.com/file/d/1ES_DxKzGUVjq6SHY50Wmw2rGZKP_2AJK/view?usp=sharing' target='_blank'>Letter of Recommendation from W3 Dev Private Limited</a>
             </li>
             <li>
               <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <a href='https://drive.google.com/file/d/1tnS2bd_6f_PDUB8J4xePtsIpWVTIYjRN/view?usp=sharing' target='_blank'>Google + Cousera Certificate Crash Course on Python</a>
             </li>
             <li>
               <GoCheck className='stat__list-icon'/>
