@@ -103,7 +103,7 @@ const Stats = () => {
             className='stat__circprogress'
             value={leetcodeStats?.totalSolved} 
             maxValue={leetcodeStats?.totalQuestions} 
-            strokeWidth = {6}
+            strokeWidth = {5}
             text={`${(leetcodeStats?.totalSolved * 100 / leetcodeStats?.totalQuestions).toFixed(2)} %`}
             styles={buildStyles ({
               pathColor: `rgb(121, 255, 244)`,
@@ -112,7 +112,7 @@ const Stats = () => {
               textColor: `#4db5ff`
             })}
           />
-            <span className='stat__desc'>Solved
+            <span className='stat__desc'><span className='stat__desc-sp'>Solved&nbsp;</span><p className='stat__key-total'> {leetcodeStats?.totalSolved}</p>
             {/* <div className='stat__key highlight'>
               {leetcodeStats?.totalSolved} / {leetcodeStats?.totalQuestions}
               </div> */}
