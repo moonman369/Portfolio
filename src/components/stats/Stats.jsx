@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './stats.css';
 import {GoCheck} from 'react-icons/go'
-import {GrCertificate} from 'react-icons/gi'
+import {MdWorkOutline} from 'react-icons/md'
+import {FiExternalLink} from 'react-icons/fi'
+import {FaHackerrank} from 'react-icons/fa'
 import {BiGitCommit, BiGitPullRequest} from 'react-icons/bi'
 import {BsStar} from 'react-icons/bs'
+import {IoLogoGoogle} from 'react-icons/io'
+import {SiEthereum, SiHiveBlockchain} from 'react-icons/si'
 import {RiGitRepositoryCommitsLine} from  'react-icons/ri'
 import axios from 'axios';
 import { CircularProgressbar,  buildStyles } from 'react-circular-progressbar';
@@ -68,7 +72,6 @@ const Stats = () => {
   const [cookies, setCookies] = useCookies({'totalRepos': 0, 'totalCommits': 0, 'totalPRs': 0, 'totalStars': 0})
   const [leetcodeStats, setLeetcodeStats] = useState(null)
   const [gitHubStats, setgitHubStats] = useState(null)
-  const [gitCardSvg, setGitCardSvg] = useState('')
   
   useEffect(() => {
     fetchLeetcodeProfile().then(res => {
@@ -77,7 +80,7 @@ const Stats = () => {
     })
 
     fetchGitHubProfile().then(res => {
-      console.log(res)
+      // console.log(res)
       setgitHubStats(res)
       const { totalRepos, totalCommits, totalPRs, totalStars } = res
       setCookies('totalRepos', totalRepos, {path: '/', expires: cookieExpiry, priority: 'High'})
@@ -113,8 +116,15 @@ const Stats = () => {
               textColor: `#4db5ff`
             })}
           />
-            <span className='stat__desc'><span className='stat__desc-sp'>Solved&nbsp;</span><p className='stat__key-total'> {leetcodeStats?.totalSolved}</p>
-            {/* <div className='stat__key highlight'>
+            <span className='stat__desc'>
+              <span>
+              <span className='stat__desc-sp'>Solved&nbsp;</span>
+              <span className='stat__key-total'> {leetcodeStats?.totalSolved}</span>
+              </span>
+              <span>
+              <span className='stat__desc-sp'>Rank&nbsp;</span><span className='stat__key-rank'>{leetcodeStats?.ranking}</span>
+              </span>
+              {/* <div className='stat__key highlight'>
               {leetcodeStats?.totalSolved} / {leetcodeStats?.totalQuestions}
               </div> */}
             </span>
@@ -170,24 +180,28 @@ const Stats = () => {
 
           <ul className='stat__list'>
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <a href="https://drive.google.com/file/d/1ES_DxKzGUVjq6SHY50Wmw2rGZKP_2AJK/view?usp=sharing" target='_blank'>Internship Completion at W3 Dev Private Limited</a>
+              <MdWorkOutline className='stat__list-icon-certificate intern'/>
+              <a href="https://drive.google.com/file/d/1BPcUwBleZGfb2CM5jZ7NM4MyX3EQo4Xg/view?usp=sharing" target='_blank'>Internship, W3 Dev Private Limited <FiExternalLink/></a>
             </li>
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <a href='https://drive.google.com/file/d/1ES_DxKzGUVjq6SHY50Wmw2rGZKP_2AJK/view?usp=sharing' target='_blank'>Letter of Recommendation from W3 Dev Private Limited</a>
+              <SiHiveBlockchain className='stat__list-icon-certificate block'/>
+              <a href='https://drive.google.com/file/d/1vssY0bkRWdwDYN4zfTTFFGO5UIwgJwB8/view?usp=share_link' target='_blank'>Blockchain Course, Udemy <FiExternalLink/></a>
             </li>
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <a href='https://drive.google.com/file/d/1tnS2bd_6f_PDUB8J4xePtsIpWVTIYjRN/view?usp=sharing' target='_blank'>Google + Cousera Certificate Crash Course on Python</a>
+              <IoLogoGoogle className='stat__list-icon-certificate goog'/>
+              <a href='https://drive.google.com/file/d/1tnS2bd_6f_PDUB8J4xePtsIpWVTIYjRN/view?usp=sharing' target='_blank'>Google, Crash Course on Python <FiExternalLink/></a>
             </li>
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <IoLogoGoogle className='stat__list-icon-certificate goog'/>
+              <a href='https://drive.google.com/file/d/1es2hoYVWtfhLeZi0x6pYm9B4xHT2d2aL/view?usp=share_link' target='_blank'>Google, Python Scripting and OS <FiExternalLink/></a>
             </li>
             <li>
-              <GoCheck className='stat__list-icon'/>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <SiEthereum className='stat__list-icon-certificate eth'/>
+              <a href='https://drive.google.com/file/d/1BsXQvH0jC0cmdQ-e9Bf0ltsnhZPIDFL7/view?usp=share_link' target='_blank'>Ethereum and Solidity, Udemy <FiExternalLink/></a>
+            </li>
+            <li>
+              <FaHackerrank className='stat__list-icon-certificate hack'/>
+              <a href='https://drive.google.com/file/d/1SCv2ieIrKY7VGU2ZPU-jdUrhE1E1AnnX/view?usp=share_link' target='_blank'>Python Skill Assessment, HackerRank <FiExternalLink/></a>
             </li>
           </ul>
         </article>

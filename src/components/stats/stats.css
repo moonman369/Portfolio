@@ -26,6 +26,38 @@
     cursor: default;
 }
 
+.stat__list-icon-certificate {
+    margin-left: 0.3rem;
+    margin-bottom: 2.5px;
+    font-size: 1.5rem;
+}
+
+.intern {
+    color: rgb(231, 85, 117);
+}
+
+.block {
+    color: rgb(201, 92, 228);
+}
+
+.goog {
+    color: rgb(233, 186, 86);
+}
+
+.eth {
+    color: rgb(102, 218, 179);
+}
+
+.hack {
+    color: rgb(95, 233, 102);
+}
+
+/* .certificate__link {
+    background-color: blueviolet;
+    border-radius: 0.7rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+} */
+
 .stat__head {
     background: var(--color-primary);
     padding: 2rem;
@@ -76,12 +108,16 @@
 }
 
 .stat__key-total {
-    border-radius: 0.42rem;
+    /* border-radius: 0.42rem; */
     color: rgb(137, 253, 244);
     margin-left: 0.1rem;
-    padding: 0px 7px 0px 7px;
     font-weight: 400;
-    /* font-size: large; */
+}
+
+.stat__key-rank {
+    color: rgb(255, 221, 69);
+    margin-left: 0.1rem;
+    font-weight: 400;
 }
 
 .stat__key-easy {
@@ -138,12 +174,17 @@
     height: 95px;
 }
 
+/* .stat__desc-sp {
+    padding-left: 2rem;
+} */
+
 .stat__desc {
     display: flex;
     align-content: space-around;
     justify-content: center;
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
+    gap: 3rem;
 }
 
 .highlight {
