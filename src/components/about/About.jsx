@@ -14,7 +14,7 @@ const About = () => {
       <div className="container about__container">
         <div className="about__me">
           <div className="about__me-image">
-            <img src={ABT} alt="About Me" />
+            <img src='https://cdn-icons-png.flaticon.com/512/1688/1688400.png' alt="About Me" />
           </div>
         </div>
 

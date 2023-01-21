@@ -15,7 +15,7 @@ const Header = () => {
         <HeaderSocials />
 
         <div className='me'>
-          <img src={ME} alt='me'/>
+          <img src='https://cdn-icons-png.flaticon.com/512/5768/5768767.png' alt='me'/>
         </div>
 
         <a href="#contact" className='scroll__down'>Scroll Down</a>
