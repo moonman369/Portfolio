@@ -45,8 +45,8 @@ header {
 
 .me{
     background: linear-gradient(var(--color-primary), transparent);
-    width: 22rem;
-    height: 30rem;
+    width: 25rem;
+    height: rem;
     position: absolute;
     left: calc(50% - 11rem);
     /* left: 50%;
@@ -55,6 +55,10 @@ header {
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
     padding: 5rem 1.5rem 1.5rem 1.5rem
+}
+
+.me-image {
+    /* height: 110%; */
 }
 
 
