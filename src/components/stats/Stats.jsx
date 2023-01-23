@@ -21,7 +21,7 @@ const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
 const octokit = new Octokit({
   auth: REACT_APP_GITHUB_PAT
 })
-const LEETCODE_API_ENDPOINT = `https://leetcode-stats-api.herokuapp.com/${REACT_APP_USERNAME}`
+const LEETCODE_API_ENDPOINT = `https://leetcode-api.cyclic.app/${REACT_APP_USERNAME}`
 
 let cookieExpiry = new Date()
 cookieExpiry.setDate(cookieExpiry.getDate() + (30 * 24 * 60 * 60))
