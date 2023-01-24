@@ -27,12 +27,13 @@ let cookieExpiry = new Date()
 cookieExpiry.setDate(cookieExpiry.getDate() + (30 * 24 * 60 * 60))
 
 const fetchLeetcodeProfile = async () => {
-    console.log(`Fetching daily coding challenge from LeetCode API.`)
+    console.log(`Fetching User Stats using LeetCode API...`)
     const res = await axios.get(LEETCODE_API_ENDPOINT, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
+    console.log('Success!')
     return res
 }
 
@@ -44,6 +45,7 @@ const fetchGitHubProfile = async () => {
     totalPRs: 0
   }
 
+  console.log('Fetching User Data using GitHub API...')
 
   let { data } = await octokit.request(`GET /users/${REACT_APP_USERNAME}/repos?per_page=300`)
   let repos = data
@@ -64,6 +66,8 @@ const fetchGitHubProfile = async () => {
   }
 
   result.totalPRs += (await octokit.request('GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all')).data.length + (await octokit.request('GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all')).data.length
+
+  console.log('Success!')
 
   return result
 }
