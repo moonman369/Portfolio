@@ -1,48 +1,48 @@
 nav {
-    background: rgba(0, 0, 0, 0.3);
-    width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
-    display: flex;
-    gap: 0.8rem;
-    border-radius: 3rem;
-    backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.3);
+  width: max-content;
+  display: block;
+  padding: 0.7rem 1.7rem;
+  z-index: 2;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  display: flex;
+  gap: 0.8rem;
+  border-radius: 3rem;
+  backdrop-filter: blur(15px);
 }
 
 nav a {
-    background: transparent;
-    padding: 0.9rem;
-    border-radius: 50%;
-    display: flex;
-    color: var(--color-light);
-    font-size: 1.1rem;
+  background: transparent;
+  padding: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  color: var(--color-light);
+  font-size: 1.1rem;
 }
 
-nav a:hover{
-    background: rgba(196, 178, 178, 0.35);
+nav a:hover {
+  background: rgba(196, 178, 178, 0.35);
 }
 
-nav a.active{
-    background: rgba(219, 202, 202, 0.3);
-    color: var(--color-white);
-    /* border: 1px solid var(--color-light); */
+nav a.active {
+  background: rgba(219, 202, 202, 0.3);
+  color: var(--color-white);
+  /* border: 1px solid var(--color-light); */
 }
 
 /* ================== MEDIA QUERIES (SMALL DEVICES) ==================== */
 
 @media screen and (max-width: 600px) {
-    nav {
-        gap: 0.1rem;
-        padding: 0.6rem 1rem;
-    }
+  nav {
+    gap: 0.1rem;
+    padding: 0.6rem 1rem;
+  }
 
-    nav a {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-    }
+  nav a {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
 }

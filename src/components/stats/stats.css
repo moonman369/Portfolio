@@ -1,55 +1,55 @@
 .stats__container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
 }
 
 .stat {
-    background: var(--color-bg-variant);
-    border-radius: 0 0 2rem 2rem;
-    border:  1px solid var(--color-primary);
-    height: fit-content;
-    transition: var(--transition);
+  background: var(--color-bg-variant);
+  border-radius: 0 0 2rem 2rem;
+  border: 1px solid var(--color-primary);
+  height: fit-content;
+  transition: var(--transition);
 }
 
 .vercel__card {
-    border-radius: 2rem 2rem 2.7rem 2rem;
-    padding-top: 2rem;
-    width: calc(101%);
-    /* height: calc(44.8%); */
-    overflow: -moz-hidden-unscrollable;
+  border-radius: 2rem 2rem 2.7rem 2rem;
+  padding-top: 2rem;
+  width: calc(101%);
+  /* height: calc(44.8%); */
+  overflow: -moz-hidden-unscrollable;
 }
 
 .stat:hover {
-    background: transparent;
-    border-color: var(--color-primary-variant);
-    cursor: default;
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
 }
 
 .stat__list-icon-certificate {
-    margin-left: 0.3rem;
-    margin-bottom: 2.5px;
-    font-size: 1.5rem;
+  margin-left: 0.3rem;
+  margin-bottom: 2.5px;
+  font-size: 1.5rem;
 }
 
 .intern {
-    color: rgb(231, 85, 117);
+  color: rgb(231, 85, 117);
 }
 
 .block {
-    color: rgb(201, 92, 228);
+  color: rgb(201, 92, 228);
 }
 
 .goog {
-    color: rgb(233, 186, 86);
+  color: rgb(233, 186, 86);
 }
 
 .eth {
-    color: rgb(102, 218, 179);
+  color: rgb(102, 218, 179);
 }
 
 .hack {
-    color: rgb(95, 233, 102);
+  color: rgb(95, 233, 102);
 }
 
 /* .certificate__link {
@@ -59,119 +59,119 @@
 } */
 
 .stat__head {
-    background: var(--color-primary);
-    padding: 2rem;
-    border-radius: 0 0 2rem 2rem;
-    box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+  background: var(--color-primary);
+  padding: 2rem;
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 .stat__head h3 {
-    color: var(--color-bg);
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 0.35rem;
-    padding-left: 0.35rem;
+  color: var(--color-bg);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.35rem;
+  padding-left: 0.35rem;
 }
 
 .stat__head img {
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
 }
 
 .stat__list {
-    padding: 1.7rem;
+  padding: 1.7rem;
 }
 
 .stat__list li {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .stat__list-git {
-    display: flex;
-    margin-top: 1rem;
-    padding: 0.7rem;
-    font-size: medium;
-    gap: 1rem;
+  display: flex;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: medium;
+  gap: 1rem;
 }
 
 .stat__key {
-    color: var(--color-bg);
-    border-radius: 0.42rem;
-    padding: 2px 6px 2px 6px;
-    /* text-align: center; */
-    font-weight: 500;
+  color: var(--color-bg);
+  border-radius: 0.42rem;
+  padding: 2px 6px 2px 6px;
+  /* text-align: center; */
+  font-weight: 500;
 }
 
 .stat__key-total {
-    /* border-radius: 0.42rem; */
-    color: rgb(137, 253, 244);
-    margin-left: 0.1rem;
-    font-weight: 400;
+  /* border-radius: 0.42rem; */
+  color: rgb(137, 253, 244);
+  margin-left: 0.1rem;
+  font-weight: 400;
 }
 
 .stat__key-rank {
-    color: rgb(255, 221, 69);
-    margin-left: 0.1rem;
-    font-weight: 400;
+  color: rgb(255, 221, 69);
+  margin-left: 0.1rem;
+  font-weight: 400;
 }
 
 .stat__key-easy {
-    background: rgb(11, 201, 83); /*rgb(11, 201, 83)*/
-    margin-right: 3.7rem;
+  background: rgb(11, 201, 83); /*rgb(11, 201, 83)*/
+  margin-right: 3.7rem;
 }
 
 .stat__key-medi {
-    background: rgb(235, 172, 0);
-    margin-right: 2rem;
+  background: rgb(235, 172, 0);
+  margin-right: 2rem;
 }
 
 .stat__key-hard {
-    background: rgb(223, 40, 40);
-    margin-right: 3.7rem;
+  background: rgb(223, 40, 40);
+  margin-right: 3.7rem;
 }
 
 .repos {
-    background: rgb(231, 85, 117);
-    margin-left: 0.9rem
+  background: rgb(231, 85, 117);
+  margin-left: 0.9rem;
 }
 .repo-icon {
-    color: rgb(231, 85, 117);
+  color: rgb(231, 85, 117);
 }
 
-.commits  {
-    background: rgb(185, 80, 247);
-    margin-left: 2.3rem
+.commits {
+  background: rgb(185, 80, 247);
+  margin-left: 2.3rem;
 }
 .commit-icon {
-    color: rgb(185, 80, 247);
+  color: rgb(185, 80, 247);
 }
 
 .prs {
-    background: rgb(243, 142, 75);
-    margin-left: 0.5rem
+  background: rgb(243, 142, 75);
+  margin-left: 0.5rem;
 }
 .pr-icon {
-    color: rgb(243, 142, 75);
+  color: rgb(243, 142, 75);
 }
 
 .stars {
-    background: rgb(235, 196, 25);
-    margin-left: 4.4rem
+  background: rgb(235, 196, 25);
+  margin-left: 4.4rem;
 }
 .star-icon {
-    color: rgb(235, 196, 25);
+  color: rgb(235, 196, 25);
 }
 
 .stat__circprogress {
-    align-self: left;
-    margin-top: 1.3rem;
-    width: 100px;
-    height: 95px;
+  align-self: left;
+  margin-top: 1.3rem;
+  width: 100px;
+  height: 95px;
 }
 
 /* .stat__desc-sp {
@@ -179,109 +179,104 @@
 } */
 
 .stat__desc {
-    display: flex;
-    align-content: space-around;
-    justify-content: center;
-    margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
-    gap: 3rem;
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  gap: 3rem;
 }
 
 .highlight {
-    background: var(--color-primary);
-    padding: 1.5px 3px 0.5px 3px;
+  background: var(--color-primary);
+  padding: 1.5px 3px 0.5px 3px;
 }
 
-
 progress {
-    margin-top: 1rem;
-    height: 5px;
-    width: auto;
-    display: block; 
+  margin-top: 1rem;
+  height: 5px;
+  width: auto;
+  display: block;
 }
 
 progress::-webkit-progress-bar {
-    border-radius:100px
+  border-radius: 100px;
 }
 
 progress::-webkit-progress-value {
-    border-radius:100px
+  border-radius: 100px;
 }
 
-progress.stat__progress-easy::-webkit-progress-bar{
-    background: rgb(5, 46, 21);
+progress.stat__progress-easy::-webkit-progress-bar {
+  background: rgb(5, 46, 21);
 }
-progress.stat__progress-easy::-webkit-progress-value{
-    background: rgb(11, 201, 83);
-}
-
-
-progress.stat__progress-medi::-webkit-progress-bar{
-    background: rgb(68, 50, 2);
-}
-progress.stat__progress-medi::-webkit-progress-value{
-    background: rgb(235, 172, 0);
+progress.stat__progress-easy::-webkit-progress-value {
+  background: rgb(11, 201, 83);
 }
 
+progress.stat__progress-medi::-webkit-progress-bar {
+  background: rgb(68, 50, 2);
+}
+progress.stat__progress-medi::-webkit-progress-value {
+  background: rgb(235, 172, 0);
+}
 
-progress.stat__progress-hard::-webkit-progress-bar{
-    background: rgb(56, 10, 10);
+progress.stat__progress-hard::-webkit-progress-bar {
+  background: rgb(56, 10, 10);
 }
 progress.stat__progress-hard::-webkit-progress-value {
-    background: rgb(223, 40, 40);
+  background: rgb(223, 40, 40);
 }
 
 .stat__list-icon {
-    margin-left: 1rem;
-    margin-bottom: 2.5px;
-    font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-bottom: 2.5px;
+  font-size: 1.5rem;
 }
 
 .stat__list p {
-    margin-top: 1.5px;
-    font-size: 0.9rem;
+  margin-top: 1.5px;
+  font-size: 0.9rem;
 }
-
 
 /* ================== MEDIA QUERIES (MEDIUM DEVICES) ==================== */
 
 @media screen and (max-width: 1024px) {
-    .stats__container {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
+  .stats__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
 
-    .stat {
-        height: auto;
-    }
+  .stat {
+    height: auto;
+  }
 }
-
 
 /* ================== MEDIA QUERIES (SMALL DEVICES) ==================== */
 
 @media screen and (max-width: 600px) {
-    .stats__container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+  .stats__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 
-    .repos {
-        /* background: rgb(43, 226, 211); */
-        margin-left: 2.5rem
-    }
+  .repos {
+    /* background: rgb(43, 226, 211); */
+    margin-left: 2.5rem;
+  }
 
-    .commits  {
-        /* background: rgb(185, 80, 247); */
-        margin-left: 3.9rem
-    }
-    
-    .prs {
-        /* background: rgb(255, 169, 56); */
-        margin-left: 2.1rem
-    }
+  .commits {
+    /* background: rgb(185, 80, 247); */
+    margin-left: 3.9rem;
+  }
 
-    .stars {
-        /* background: rgb(235, 196, 25); */
-        margin-left: 6rem
-    }
+  .prs {
+    /* background: rgb(255, 169, 56); */
+    margin-left: 2.1rem;
+  }
+
+  .stars {
+    /* background: rgb(235, 196, 25); */
+    margin-left: 6rem;
+  }
 }
