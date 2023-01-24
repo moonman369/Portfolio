@@ -136,11 +136,11 @@
 }
 
 .repos {
-    background: rgb(43, 226, 211);
+    background: rgb(231, 85, 117);
     margin-left: 0.9rem
 }
 .repo-icon {
-    color: rgb(43, 226, 211);
+    color: rgb(231, 85, 117);
 }
 
 .commits  {
@@ -152,11 +152,11 @@
 }
 
 .prs {
-    background: rgb(255, 169, 56);
+    background: rgb(243, 142, 75);
     margin-left: 0.5rem
 }
 .pr-icon {
-    color: rgb(255, 169, 56);
+    color: rgb(243, 142, 75);
 }
 
 .stars {
@@ -266,22 +266,22 @@ progress.stat__progress-hard::-webkit-progress-value {
     }
 
     .repos {
-        background: rgb(43, 226, 211);
+        /* background: rgb(43, 226, 211); */
         margin-left: 2.5rem
     }
 
     .commits  {
-        background: rgb(185, 80, 247);
+        /* background: rgb(185, 80, 247); */
         margin-left: 3.9rem
     }
     
     .prs {
-        background: rgb(255, 169, 56);
+        /* background: rgb(255, 169, 56); */
         margin-left: 2.1rem
     }
 
     .stars {
-        background: rgb(235, 196, 25);
+        /* background: rgb(235, 196, 25); */
         margin-left: 6rem
     }
 }
