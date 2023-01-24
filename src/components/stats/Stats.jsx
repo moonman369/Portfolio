@@ -33,7 +33,7 @@ const fetchLeetcodeProfile = async () => {
         'Content-Type': 'application/json'
       }
     })
-    console.log('Success!')
+    console.log('Leetcode API call status: Success!')
     return res
 }
 
@@ -67,7 +67,7 @@ const fetchGitHubProfile = async () => {
 
   result.totalPRs += (await octokit.request('GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all')).data.length + (await octokit.request('GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all')).data.length
 
-  console.log('Success!')
+  console.log("GitHub API call status: Success!")
 
   return result
 }
