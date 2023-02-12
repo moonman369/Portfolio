@@ -93,14 +93,20 @@ const Stats = () => {
     totalCommits: 0,
     totalPRs: 0,
     totalStars: 0,
+    leetcodeCookie: ''
   });
   const [leetcodeStats, setLeetcodeStats] = useState(null);
   const [gitHubStats, setgitHubStats] = useState(null);
 
   useEffect(() => {
     fetchLeetcodeProfile().then((res) => {
-      // console.log(res)
+      // console.log(cookies.leetcodeCookie)
       setLeetcodeStats(res.data);
+      setCookies('leetcodeCookie', JSON.stringify(res.data), {
+        path: "/",
+        expires: cookieExpiry,
+        priority: "High",
+      })
     });
 
     fetchGitHubProfile().then((res) => {
@@ -191,7 +197,7 @@ const Stats = () => {
           <div className="stat__list">
             <span className="stat__key stat__key-medi">Medium</span>
             <span className="stat_val">
-              {leetcodeStats?.mediumSolved + 20} / {leetcodeStats?.totalMedium}
+              {leetcodeStats?.mediumSolved + 20 ?? cookies.leetcodeCookie.mediumSolved + 20} / {leetcodeStats?.totalMedium ?? cookies.leetcodeStats?.totalMedium}
             </span>
             <progress
               className="stat__progress stat__progress-medi"
