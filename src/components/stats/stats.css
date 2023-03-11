@@ -15,7 +15,7 @@
 .vercel__card {
   border-radius: 2rem 2rem 2.7rem 2rem;
   padding-top: 2rem;
-  width: calc(101%);
+  width: calc(100.5%);
   /* height: calc(44.8%); */
   overflow: -moz-hidden-unscrollable;
 }
