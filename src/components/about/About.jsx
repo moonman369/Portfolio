@@ -1,8 +1,8 @@
 import React from "react";
 import "./about.css";
 import ABT from "../../assets/me-about.jpg";
+import { BsCodeSlash } from "react-icons/bs";
 import { FaAward } from "react-icons/fa";
-import { FiUsers } from "react-icons/fi";
 import { VscFolderLibrary } from "react-icons/vsc";
 
 const About = () => {
@@ -25,14 +25,14 @@ const About = () => {
           <div className="about__cards">
             <article className="about__card">
               <FaAward className="about__icon" />
-              <h5>Experience</h5>
-              <small>3+ years Work Experience</small>
+              <h5>Academics</h5>
+              <small>8.42 Average CGPA</small>
             </article>
 
             <article className="about__card">
-              <FiUsers className="about__icon" />
-              <h5>Clients</h5>
-              <small>300+ Worldwide</small>
+              <BsCodeSlash className="about__icon" />
+              <h5>Codeability</h5>
+              <small>25k+ lines of code</small>
             </article>
 
             <article className="about__card">
@@ -44,9 +44,10 @@ const About = () => {
 
           <p>
             I am Ayan Maiti, a Final Year, Electrical Engineering student (Batch
-            2023). I have worked as a Blockchain Developer Intern at W3Dev
+            2023). I have worked as a Blockchain/Web3 Developer Intern at W3Dev
             Private Limited for four(4) months. I have an in-depth understanding
-            of the blockchain development and its related concepts.
+            of blockchain development, its related concepts, and fullstack web
+            development
           </p>
 
           <a href="#contact" className="btn btn-primary">

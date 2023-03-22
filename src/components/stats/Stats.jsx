@@ -87,31 +87,65 @@ const fetchGitHubProfile = async () => {
   return result;
 };
 
+const fetchGitCommitsAndStars = async () => {
+  let totalStars = 0;
+  let { data } = await octokit.request(
+    `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
+  );
+  let repos = data;
+
+  for (let repo in repos) {
+    totalStars += repo.stargazers_count;
+  }
+
+  return { totalRepos: repos.length, totalStars: totalStars };
+};
+
+const fetchGitStars = async () => {};
+
 const Stats = () => {
   const [cookies, setCookies] = useCookies({
     totalRepos: 0,
     totalCommits: 0,
     totalPRs: 0,
     totalStars: 0,
-    leetcodeCookie: ''
+    leetcodeCookie: "",
   });
-  const [leetcodeStats, setLeetcodeStats] = useState(null);
-  const [gitHubStats, setgitHubStats] = useState(null);
+  const [leetcodeStats, setLeetcodeStats] = useState({});
+  const [gitHubStats, setGitHubStats] = useState({});
+
+  const fetchGitCommitsAndStars = async () => {
+    let totalStars = 0;
+    let { data } = await octokit.request(
+      `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
+    );
+    let repos = data;
+
+    for (let repo in repos) {
+      totalStars += repo.stargazers_count;
+    }
+
+    const result = { totalRepos: repos.length, totalStars: totalStars };
+
+    setGitHubStats(...gitHubStats, ...result);
+
+    return;
+  };
 
   useEffect(() => {
     fetchLeetcodeProfile().then((res) => {
       // console.log(cookies.leetcodeCookie)
       setLeetcodeStats(res.data);
-      setCookies('leetcodeCookie', JSON.stringify(res.data), {
+      setCookies("leetcodeCookie", JSON.stringify(res.data), {
         path: "/",
         expires: cookieExpiry,
         priority: "High",
-      })
+      });
     });
 
     fetchGitHubProfile().then((res) => {
       // console.log(res)
-      setgitHubStats(res);
+      setGitHubStats(res);
       const { totalRepos, totalCommits, totalPRs, totalStars } = res;
       setCookies("totalRepos", totalRepos, {
         path: "/",
@@ -197,7 +231,10 @@ const Stats = () => {
           <div className="stat__list">
             <span className="stat__key stat__key-medi">Medium</span>
             <span className="stat_val">
-              {leetcodeStats?.mediumSolved + 20 ?? cookies.leetcodeCookie.mediumSolved + 20} / {leetcodeStats?.totalMedium ?? cookies.leetcodeStats?.totalMedium}
+              {leetcodeStats?.mediumSolved + 20 ??
+                cookies.leetcodeCookie.mediumSolved + 20}{" "}
+              /{" "}
+              {leetcodeStats?.totalMedium ?? cookies.leetcodeStats?.totalMedium}
             </span>
             <progress
               className="stat__progress stat__progress-medi"
