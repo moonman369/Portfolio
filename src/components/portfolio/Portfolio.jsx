@@ -1,7 +1,7 @@
 import React from "react";
 import "./portfolio.css";
 import img1 from "../../assets/defund2.png";
-import img2 from "../../assets/portfolio2.jpg";
+import img2 from "../../assets/avaxgods.png";
 import img3 from "../../assets/portfolio3.jpg";
 import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/dicey.png";
@@ -25,9 +25,9 @@ const data = [
   {
     id: 3,
     image: img2,
-    title: "Ethereum Token Event Listener",
-    github: "https://github.com/moonman369/ERC20-Event-Listener",
-    demo: "https://github.com",
+    title: "AVAX Gods - NFT Card Game",
+    github: "https://github.com/moonman369/AVAX-Gods-Frontend",
+    demo: "https://avaxgodsonline.netlify.app/",
   },
   // {
   //   id: 3,
