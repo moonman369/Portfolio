@@ -2,7 +2,7 @@ import React from "react";
 import "./portfolio.css";
 import img1 from "../../assets/defund2.png";
 import img2 from "../../assets/avaxgods.png";
-import img3 from "../../assets/portfolio3.jpg";
+import img3 from "../../assets/anychat.png";
 import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/dicey.png";
 import img6 from "../../assets/guesswhat.png";
@@ -39,9 +39,9 @@ const data = [
   {
     id: 4,
     image: img3,
-    title: "Avalanche Based NFT Marketplace",
-    github: "https://github.com/moonman369/Avalanche-NFT-Market",
-    demo: "https://github.com",
+    title: "AnyChat - Anonymous messaging app",
+    github: "https://github.com/moonman369/AnyChat",
+    demo: "https://anychat.cyclic.app/",
   },
   {
     id: 5,
