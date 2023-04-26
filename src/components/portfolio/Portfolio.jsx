@@ -1,33 +1,34 @@
 import React from "react";
 import "./portfolio.css";
-import img1 from "../../assets/defund2.png";
-import img2 from "../../assets/avaxgods.png";
-import img3 from "../../assets/anychat.png";
+import img1 from "../../assets/avaxgods.png";
+import img2 from "../../assets/defund2.png";
+import img3 from "../../assets/selfdrvcar.png";
 import img4 from "../../assets/raffle.png";
-import img5 from "../../assets/dicey.png";
-import img6 from "../../assets/guesswhat.png";
+import img5 from "../../assets/anychat.png";
+import img6 from "../../assets/dicey.png";
 
 const data = [
   {
     id: 1,
     image: img1,
+
+    title: "AVAX Gods - NFT Card Game",
+    github: "https://github.com/moonman369/AVAX-Gods-Frontend",
+    demo: "https://avaxgodsonline.netlify.app/",
+  },
+  {
+    id: 2,
+    image: img2,
     title: "DeFund: Decentralized Crowdfunding",
     github: "https://github.com/moonman369/DeFund",
     demo: "https://defund.netlify.app/",
   },
   {
-    id: 2,
-    image: img4,
-    title: "Ethereum Raffle Lottery DApp",
-    github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
-    demo: "https://ethereum-raffle-dapp.vercel.app/",
-  },
-  {
     id: 3,
-    image: img2,
-    title: "AVAX Gods - NFT Card Game",
-    github: "https://github.com/moonman369/AVAX-Gods-Frontend",
-    demo: "https://avaxgodsonline.netlify.app/",
+    image: img3,
+    title: "AI Based Self Driving Car",
+    github: "https://github.com/moonman369/Self-Driving-AI-Car",
+    demo: "https://github.com/moonman369/Self-Driving-AI-Car",
   },
   // {
   //   id: 3,
@@ -38,24 +39,25 @@ const data = [
   // },
   {
     id: 4,
-    image: img3,
+    image: img4,
+    title: "Ethereum Raffle: Decentralized Lottery",
+    github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
+    demo: "https://ethereum-raffle-dapp.vercel.app/",
+  },
+  {
+    id: 5,
+    image: img5,
+
     title: "AnyChat - Anonymous messaging app",
     github: "https://github.com/moonman369/AnyChat",
     demo: "https://anychat.cyclic.app/",
   },
   {
-    id: 5,
-    image: img5,
+    id: 6,
+    image: img6,
     title: "Dicey - An Interactive Game of Chance",
     github: "https://github.com/moonman369/Dicey",
     demo: "https://moonman369.github.io/Dicey/",
-  },
-  {
-    id: 6,
-    image: img6,
-    title: "Guess What - A Fun and Simple Guessing Game",
-    github: "https://github.com/moonman369/Guess-What",
-    demo: "https://moonman369.github.io/Guess-What/",
   },
 ];
 
