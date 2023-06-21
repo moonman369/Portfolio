@@ -1,5 +1,8 @@
 import React from "react";
 import "./portfolio.css";
+import msnd from "../../assets/meshnode.png";
+import yegpt from "../../assets/yegpt.png";
+import lyriks from "../../assets/lyriks.png";
 import img1 from "../../assets/avaxgods.png";
 import img2 from "../../assets/defund2.png";
 import img3 from "../../assets/selfdrvcar.png";
@@ -8,6 +11,14 @@ import img5 from "../../assets/anychat.png";
 import img6 from "../../assets/dicey.png";
 
 const data = [
+  {
+    id: 0,
+    image: msnd,
+    title:
+      "MeshNode - Decentralized Q&A Platform (Chainlink Hackathon Project)",
+    github: "https://github.com/moonman369/MeshNode",
+    demo: "https://mesh-node.vercel.app/",
+  },
   {
     id: 1,
     image: img1,
@@ -25,6 +36,20 @@ const data = [
   },
   {
     id: 3,
+    image: yegpt,
+    title: "YeGPT - GPT-4 based Kanye West Chatbot",
+    github: "https://github.com/moonman369/YeGPT",
+    demo: "https://yegpt-0.vercel.app/",
+  },
+  {
+    id: 3,
+    image: lyriks,
+    title: "Lyriks - Spotify Clone",
+    github: "https://github.com/moonman369/Lyrikx-Music",
+    demo: "https://lyriks1.netlify.app/",
+  },
+  {
+    id: 4,
     image: img3,
     title: "AI Based Self Driving Car",
     github: "https://github.com/moonman369/Self-Driving-AI-Car",
@@ -38,14 +63,14 @@ const data = [
   //   demo: "https://github.com",
   // },
   {
-    id: 4,
+    id: 5,
     image: img4,
     title: "Ethereum Raffle: Decentralized Lottery",
     github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
     demo: "https://ethereum-raffle-dapp.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     image: img5,
 
     title: "AnyChat - Anonymous messaging app",
@@ -53,7 +78,7 @@ const data = [
     demo: "https://anychat.cyclic.app/",
   },
   {
-    id: 6,
+    id: 7,
     image: img6,
     title: "Dicey - An Interactive Game of Chance",
     github: "https://github.com/moonman369/Dicey",
