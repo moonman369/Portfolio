@@ -42,12 +42,13 @@ header {
 
 .me {
   background: linear-gradient(var(--color-primary), transparent);
+  background-image: url("../../assets/me-bg-3.gif");
   width: 22rem;
   height: 35rem;
   position: absolute;
   left: calc(50% - 11rem);
   /* left: 50%;
-    transform: translateX(-50%); */
+  transform: translateX(-50%); */
   margin-top: 4rem;
   border-radius: 12rem 12rem 0 0;
   overflow: hidden;
