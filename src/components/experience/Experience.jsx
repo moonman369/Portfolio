@@ -47,6 +47,13 @@ const Experience = () => {
                 <small className="text-light">Intermediate</small>
               </div>
             </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Tailwind CSS</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
           </div>
         </div>
         <div className="experience__backend">
@@ -87,6 +94,13 @@ const Experience = () => {
                 <small className="text-light">Intermediate</small>
               </div>
             </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>MongoDB</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
           </div>
         </div>
         <div className="experience__web3">
@@ -123,7 +137,14 @@ const Experience = () => {
             <article className="experience__details">
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
-                <h4>Truffle + Web3JS</h4>
+                <h4>Chainlink</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Metamask</h4>
                 <small className="text-light">Intermediate</small>
               </div>
             </article>
