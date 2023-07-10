@@ -32,7 +32,7 @@ const About = () => {
             <article className="about__card">
               <BsCodeSlash className="about__icon" />
               <h5>Codeability</h5>
-              <small>25k+ lines of code</small>
+              <small>35k+ lines of code</small>
             </article>
 
             <article className="about__card">

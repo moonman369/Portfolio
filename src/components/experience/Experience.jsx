@@ -54,6 +54,13 @@ const Experience = () => {
                 <small className="text-light">Beginner</small>
               </div>
             </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Redux</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
           </div>
         </div>
         <div className="experience__backend">
@@ -98,6 +105,13 @@ const Experience = () => {
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
                 <h4>MongoDB</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Flask.py</h4>
                 <small className="text-light">Beginner</small>
               </div>
             </article>
@@ -146,6 +160,13 @@ const Experience = () => {
               <div>
                 <h4>Metamask</h4>
                 <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Web3Auth</h4>
+                <small className="text-light">Beginner</small>
               </div>
             </article>
           </div>

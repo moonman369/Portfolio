@@ -16,7 +16,7 @@
   --color-primary: #4d8bff; /*#4db5ff    linear-gradient(#ff6161, #c74dff)*/
   --color-primary-gradient: linear-gradient(#4d8bff, #4dffbb);
   -color-primary-variant: rgba(77, 181, 255, 0.4);
-  --color-white: rgb(185, 207, 255);
+  --color-white: rgb(225, 235, 255);
   --color-light: rgba(255, 255, 255, 0.6);
 
   --transition: all 450ms ease;
