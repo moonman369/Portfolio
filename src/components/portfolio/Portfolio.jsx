@@ -3,6 +3,7 @@ import "./portfolio.css";
 import msnd from "../../assets/meshnode.png";
 import yegpt from "../../assets/yegpt.png";
 import lyriks from "../../assets/lyriks.png";
+import tvrs from "../../assets/tweetverse.png";
 import img1 from "../../assets/avaxgods.png";
 import img2 from "../../assets/defund2.png";
 import img3 from "../../assets/selfdrvcar.png";
@@ -40,6 +41,14 @@ const data = [
     title: "YeGPT - GPT-4 based Kanye West Chatbot",
     github: "https://github.com/moonman369/YeGPT",
     demo: "https://yegpt-0.vercel.app/",
+  },
+  {
+    id: 3,
+    image: tvrs,
+    title:
+      "TweetVerse - A Decentralized Twitter Clone with Web2.0 authorization support.",
+    github: "https://github.com/moonman369/TweetVerse",
+    demo: "https://tweetverse.vercel.app/",
   },
   {
     id: 3,
