@@ -4,6 +4,7 @@ import msnd from "../../assets/meshnode.png";
 import yegpt from "../../assets/yegpt.png";
 import lyriks from "../../assets/lyriks.png";
 import tvrs from "../../assets/tweetverse.png";
+import everif from "../../assets/emailverifier.png";
 import img1 from "../../assets/avaxgods.png";
 import img2 from "../../assets/defund2.png";
 import img3 from "../../assets/selfdrvcar.png";
@@ -23,7 +24,6 @@ const data = [
   {
     id: 1,
     image: img1,
-
     title: "AVAX Gods - NFT Card Game",
     github: "https://github.com/moonman369/AVAX-Gods-Frontend",
     demo: "https://avaxgodsonline.netlify.app/",
@@ -34,6 +34,13 @@ const data = [
     title: "DeFund: Decentralized Crowdfunding",
     github: "https://github.com/moonman369/DeFund",
     demo: "https://defund.netlify.app/",
+  },
+  {
+    id: 1,
+    image: everif,
+    title: "GO Email Verifier - Golang based email address domain verifier API",
+    github: "https://github.com/moonman369/Go-Email-Verifier",
+    demo: "go-email-verifier.cleverapps.io/",
   },
   {
     id: 3,
