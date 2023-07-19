@@ -25,34 +25,39 @@ const Contact = () => {
 
   const sendEmail = async (e) => {
     e.preventDefault();
-    const verificationResult = await verifyEmail(form.current.email.value);
-    console.log(verificationResult);
-    if (verificationResult) {
-      emailjs
-        .sendForm(
-          "service_m61baic",
-          "template_9nxzoai",
-          form.current,
-          "yrdLNwbctkqA0TVRm"
-        )
-        .then(
-          (result) => {
-            // console.log(result);
-            if (result.status === 200) {
-              NotificationManager.success("Message sent successfully");
+    try {
+      const verificationResult = await verifyEmail(form.current.email.value);
+      console.log(verificationResult);
+      if (verificationResult) {
+        emailjs
+          .sendForm(
+            "service_m61baic",
+            "template_9nxzoai",
+            form.current,
+            "yrdLNwbctkqA0TVRm"
+          )
+          .then(
+            (result) => {
+              // console.log(result);
+              if (result.status === 200) {
+                NotificationManager.success("Message sent successfully");
+              }
+              e.target.reset();
+            },
+            (error) => {
+              console.log(error.text);
             }
-            e.target.reset();
-          },
-          (error) => {
-            console.log(error.text);
-          }
+          );
+      } else {
+        NotificationManager.error(
+          "Please use a different Email Address and try again.",
+          "Invalid Domain Name"
         );
-    } else {
-      NotificationManager.error(
-        "Please Try a different Email Address and Try again",
-        "Invalid Domain Name"
-      );
-      // e.target.reset();
+        // e.target.reset();
+      }
+    } catch (error) {
+      console.log(error);
+      NotificationManager.error("Unexpected Error Occurred!");
     }
   };
   return (
