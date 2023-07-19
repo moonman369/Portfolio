@@ -13,9 +13,12 @@ const Contact = () => {
   const verifyEmail = async (emailAddress) => {
     const [id, domain] = emailAddress.split("@");
     console.log(domain);
-    const { data } = await axios.post("http://localhost:8080/verify", {
-      name: domain,
-    });
+    const { data } = await axios.post(
+      "https://go-email-verifier.cleverapps.io/verify",
+      {
+        name: domain,
+      }
+    );
     const { hasMX, hasSPF, hasDMARC } = data;
     return hasMX && hasSPF && hasDMARC;
   };
