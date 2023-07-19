@@ -5,31 +5,52 @@ import { TfiEmail } from "react-icons/tfi";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { NotificationManager } from "react-notifications";
+import axios from "axios";
 
 const Contact = () => {
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const verifyEmail = async (emailAddress) => {
+    const [id, domain] = emailAddress.split("@");
+    console.log(domain);
+    const { data } = await axios.post("http://localhost:8080/verify", {
+      name: domain,
+    });
+    const { hasMX, hasSPF, hasDMARC } = data;
+    return hasMX && hasSPF && hasDMARC;
+  };
+
+  const sendEmail = async (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_m61baic",
-        "template_9nxzoai",
-        form.current,
-        "yrdLNwbctkqA0TVRm"
-      )
-      .then(
-        (result) => {
-          // console.log(result);
-          if (result.status === 200) {
-            NotificationManager.success("Message sent successfully");
+    const verificationResult = await verifyEmail(form.current.email.value);
+    console.log(verificationResult);
+    if (verificationResult) {
+      emailjs
+        .sendForm(
+          "service_m61baic",
+          "template_9nxzoai",
+          form.current,
+          "yrdLNwbctkqA0TVRm"
+        )
+        .then(
+          (result) => {
+            // console.log(result);
+            if (result.status === 200) {
+              NotificationManager.success("Message sent successfully");
+            }
+            e.target.reset();
+          },
+          (error) => {
+            console.log(error.text);
           }
-          e.target.reset();
-        },
-        (error) => {
-          console.log(error.text);
-        }
+        );
+    } else {
+      NotificationManager.error(
+        "Please Try a different Email Address and Try again",
+        "Invalid Domain Name"
       );
+      // e.target.reset();
+    }
   };
   return (
     <section id="contact">
