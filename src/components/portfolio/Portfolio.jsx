@@ -11,6 +11,7 @@ import img3 from "../../assets/selfdrvcar.png";
 import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/anychat.png";
 import img6 from "../../assets/dicey.png";
+import pingbot from "../../assets/pingbot.png";
 
 const data = [
   {
@@ -34,6 +35,13 @@ const data = [
     title: "DeFund: Decentralized Crowdfunding",
     github: "https://github.com/moonman369/DeFund",
     demo: "https://defund.netlify.app/",
+  },
+  {
+    id: 1,
+    image: pingbot,
+    title: "Ping-Bot-v0: Golang based AI Discord Chat Bot",
+    github: "https://github.com/moonman369/Go-Discord-Bot",
+    demo: "https://discord.com/oauth2/authorize?client_id=1134185454502170694&permissions=2048&scope=bot%20applications.commands",
   },
   {
     id: 1,
