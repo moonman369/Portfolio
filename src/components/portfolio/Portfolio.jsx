@@ -48,7 +48,7 @@ const data = [
     image: everif,
     title: "GO Email Verifier - Golang based email address domain verifier API",
     github: "https://github.com/moonman369/Go-Email-Verifier",
-    demo: "go-email-verifier.cleverapps.io/",
+    demo: "https://go-email-verifier.cleverapps.io/",
   },
   {
     id: 3,
