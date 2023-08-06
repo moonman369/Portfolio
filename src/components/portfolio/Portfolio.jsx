@@ -41,7 +41,7 @@ const data = [
     image: pingbot,
     title: "Ping-Bot-v0: Golang based AI Discord Chat Bot",
     github: "https://github.com/moonman369/Go-Discord-Bot",
-    demo: "https://discord.com/oauth2/authorize?client_id=1134185454502170694&permissions=2048&scope=bot%20applications.commands",
+    demo: "https://top.gg/bot/1134185454502170694",
   },
   {
     id: 1,
