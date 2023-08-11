@@ -88,7 +88,7 @@ const RainStream = (props) => {
         marginTop: topPadding,
         marginLeft: -8,
         marginRight: -8,
-        textShadow: "0px 0px 8px rgba(82, 189, 252, 0.8);",
+        textShadow: "0px 0px 8px rgba(181, 238, 255, 0.8);",
         fontSize: 20,
       }}
     >
