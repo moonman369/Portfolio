@@ -10,13 +10,14 @@ const Header = () => {
   const [displayMatrix, setDisplayMatrix] = useState(false);
   return (
     <header>
+      {displayMatrix ? <MatrixRain customClass="matrix" /> : <div></div>}
       <div className="container header__container">
         <h5>Hello I'm</h5>
         <h1>Ayan Maiti</h1>
         <h5 className="text-light">Web3 Developer</h5>
         <CTA />
         <HeaderSocials />
-        {displayMatrix ? <MatrixRain customClass="matrix" /> : <div></div>}
+        {/* {displayMatrix ? <MatrixRain customClass="matrix" /> : <div></div>} */}
 
         <div className="me">
           <img
