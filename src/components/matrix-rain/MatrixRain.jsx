@@ -8,7 +8,7 @@ const STREAM_MUTATION_ODDS = 0.02;
 const MIN_STREAM_SIZE = 20;
 const MAX_STREAM_SIZE = 60;
 
-const MIN_INTERVAL_DELAY = 50;
+const MIN_INTERVAL_DELAY = 40;
 const MAX_INTERVAL_DELAY = 100;
 
 const MIN_DELAY_BETWEEN_STREAMS = 0;
@@ -88,7 +88,7 @@ const RainStream = (props) => {
         marginTop: topPadding,
         marginLeft: -8,
         marginRight: -8,
-        textShadow: "0px 0px 8px rgba(181, 238, 255, 0.8);",
+        textShadow: "0px 0px 9px rgba(75, 213, 255, 1)",
         fontSize: 20,
       }}
     >
