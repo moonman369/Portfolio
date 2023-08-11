@@ -60,7 +60,7 @@ const RainStream = (props) => {
       setStream([]);
       const newStream = getRandStream();
       setStream(newStream);
-      setTopPadding(newStream.length * -44);
+      setTopPadding(newStream.length * -50);
       setIntervalDelay(null);
       setTimeout(
         () =>
@@ -70,7 +70,7 @@ const RainStream = (props) => {
         getRandInRange(MIN_DELAY_BETWEEN_STREAMS, MAX_DELAY_BETWEEN_STREAMS)
       );
     } else {
-      setTopPadding(topPadding + 44);
+      setTopPadding(topPadding + 50);
     }
     // setStream(stream => [...stream.slice(1, stream.length), getRandChar()]);
     setStream(getMutatedStream);
