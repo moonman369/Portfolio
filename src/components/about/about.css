@@ -29,6 +29,10 @@
   transform: rotate(-10deg);
 }
 
+.about__me-image:hover .matrix {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .about__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

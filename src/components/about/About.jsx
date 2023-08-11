@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./about.css";
 import ABT from "../../assets/me-about.jpg";
 import { BsCodeSlash } from "react-icons/bs";
 import { FaAward } from "react-icons/fa";
 import { VscFolderLibrary } from "react-icons/vsc";
+import MatrixRain from "../matrix-rain/MatrixRain";
 
 const About = () => {
+  const [displayMatrix, setDisplayMatrix] = useState(false);
   return (
     <section id="about">
       <h5>Get To Know</h5>
       <h2>About me</h2>
+
+      {displayMatrix ? <MatrixRain customClass="matrix" /> : <div></div>}
 
       <div className="container about__container">
         <div className="about__me">
@@ -17,6 +21,12 @@ const About = () => {
             <img
               src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png"
               alt="About Me"
+              onMouseEnter={() => {
+                setDisplayMatrix(true);
+              }}
+              onMouseLeave={() => {
+                setDisplayMatrix(false);
+              }}
             />
           </div>
         </div>
