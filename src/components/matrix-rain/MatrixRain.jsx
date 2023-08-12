@@ -9,10 +9,10 @@ const MIN_STREAM_SIZE = 20;
 const MAX_STREAM_SIZE = 60;
 
 const MIN_INTERVAL_DELAY = 40;
-const MAX_INTERVAL_DELAY = 100;
+const MAX_INTERVAL_DELAY = 90;
 
-const MIN_DELAY_BETWEEN_STREAMS = 0;
-const MAX_DELAY_BETWEEN_STREAMS = 2000;
+const MIN_DELAY_BETWEEN_STREAMS = 200;
+const MAX_DELAY_BETWEEN_STREAMS = 5000;
 
 const getRandInRange = (min, max) =>
   Math.floor(Math.random() * (max - min)) + min;
@@ -88,7 +88,7 @@ const RainStream = (props) => {
         marginTop: topPadding,
         marginLeft: -8,
         marginRight: -8,
-        textShadow: "0px 0px 9px rgba(75, 213, 255, 1)",
+        textShadow: "0px 0px 8px rgba(75, 213, 255, 1)",
         fontSize: 20,
       }}
     >
@@ -101,7 +101,7 @@ const RainStream = (props) => {
             color: index === stream.length - 1 ? "#fff" : undefined,
             textShadow:
               index === stream.length - 1
-                ? "0px 0px 20px rgba(255, 255, 255, 1)"
+                ? "0px 10px 30px rgb(226, 248, 255)"
                 : undefined,
           }}
         >
@@ -124,7 +124,7 @@ const MatrixRain = (props) => {
     });
   }, []);
 
-  const streamCount = containerSize ? Math.floor(window.innerWidth / 15) : 0;
+  const streamCount = containerSize ? Math.floor(window.innerWidth / 10) : 0;
 
   return (
     <div

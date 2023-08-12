@@ -5,11 +5,12 @@ import { BsCodeSlash } from "react-icons/bs";
 import { FaAward } from "react-icons/fa";
 import { VscFolderLibrary } from "react-icons/vsc";
 import MatrixRain from "../matrix-rain/MatrixRain";
+import useInterval from "@use-it/interval";
 
 const About = () => {
   const [displayMatrix, setDisplayMatrix] = useState(false);
   return (
-    <section id="about">
+    <section id="about" className="about">
       <h5>Get To Know</h5>
       <h2>About me</h2>
 
@@ -22,9 +23,14 @@ const About = () => {
               src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png"
               alt="About Me"
               onMouseEnter={() => {
-                setDisplayMatrix(true);
+                setTimeout(() => {
+                  setDisplayMatrix(true);
+                }, 300);
               }}
               onMouseLeave={() => {
+                // setTimeout(() => {
+                //   setDisplayMatrix(false);
+                // }, 300);
                 setDisplayMatrix(false);
               }}
             />
