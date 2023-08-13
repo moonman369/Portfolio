@@ -131,6 +131,7 @@ const MatrixRain = (props) => {
       className={props.customClass}
       style={{
         background: "rgba(0, 0, 0, 0.5)",
+        backgroundImage: "url(../src/assets/bg-texture.png)",
         position: "fixed",
         top: 0,
         left: 0,
