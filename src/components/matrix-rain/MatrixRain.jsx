@@ -88,7 +88,7 @@ const RainStream = (props) => {
         marginTop: topPadding,
         marginLeft: -12,
         marginRight: -12,
-        textShadow: "0px 0px 8px rgba(75, 213, 255, 1)",
+        textShadow: `0px 0px 9px rgba(75, 213, 255, 1)`,
         fontSize: 20,
       }}
     >
@@ -101,7 +101,7 @@ const RainStream = (props) => {
             color: index === stream.length - 1 ? "#fff" : undefined,
             textShadow:
               index === stream.length - 1
-                ? "0px 10px 30px rgb(226, 248, 255)"
+                ? "0px 10px 30px rgb(255, 255, 255)"
                 : undefined,
           }}
         >
