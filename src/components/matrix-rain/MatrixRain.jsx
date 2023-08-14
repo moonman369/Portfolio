@@ -3,7 +3,7 @@ import useInterval from "@use-it/interval";
 
 // Constants
 const VALID_CHARS = `アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+~}{|:?><''\"`;
-const STREAM_MUTATION_ODDS = 0.1;
+const STREAM_MUTATION_ODDS = 0.05;
 
 const MIN_STREAM_SIZE = 20;
 const MAX_STREAM_SIZE = 60;
