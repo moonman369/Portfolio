@@ -124,7 +124,7 @@ const MatrixRain = (props) => {
     });
   }, []);
 
-  const streamCount = containerSize ? Math.floor(window.innerWidth / 50) : 0;
+  const streamCount = containerSize ? Math.floor(window.innerWidth / 75) : 0;
 
   return (
     <div
@@ -147,6 +147,7 @@ const MatrixRain = (props) => {
     >
       {new Array(streamCount).fill().map((_) => (
         <>
+          <RainStream height={containerSize?.height} />
           <RainStream height={containerSize?.height} />
           <RainStream height={containerSize?.height} />
           <RainStream height={containerSize?.height} />
