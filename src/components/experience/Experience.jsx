@@ -64,7 +64,7 @@ const Experience = () => {
           </div>
         </div>
         <div className="experience__backend">
-          <h3>Backend Technologies</h3>
+          <h3>Backend/Middleware Technologies</h3>
           <div className="experience__content">
             <article className="experience__details">
               <BsPatchCheckFill className="experience__details-icon" />
@@ -112,6 +112,13 @@ const Experience = () => {
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
                 <h4>Flask.py</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Mulesoft</h4>
                 <small className="text-light">Beginner</small>
               </div>
             </article>
@@ -166,6 +173,13 @@ const Experience = () => {
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
                 <h4>Web3Auth</h4>
+                <small className="text-light">Beginner</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Polygon Edge Supernets</h4>
                 <small className="text-light">Beginner</small>
               </div>
             </article>

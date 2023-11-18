@@ -12,6 +12,7 @@ import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/anychat.png";
 import img6 from "../../assets/dicey.png";
 import pingbot from "../../assets/pingbot.png";
+import apixi from "../../assets/Capture.PNG";
 
 const data = [
   {
@@ -42,6 +43,13 @@ const data = [
     title: "Ping-Bot-v0: Golang based AI Discord Chat Bot",
     github: "https://github.com/moonman369/Go-Discord-Bot",
     demo: "https://top.gg/bot/1134185454502170694",
+  },
+  {
+    id: 1,
+    image: apixi,
+    title: "Apixi: AI Image generator and Sharing platform (uses Dall-E)",
+    github: "https://github.com/moonman369/ApixiClient",
+    demo: "https://apixi.vercel.app/",
   },
   {
     id: 1,

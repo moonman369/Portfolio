@@ -60,10 +60,11 @@ const About = () => {
 
           <p>
             I am Ayan Maiti, a Final Year, Electrical Engineering student (Batch
-            2023). I have worked as a Blockchain/Web3 Developer Intern at W3Dev
-            Private Limited for four(4) months. I have an in-depth understanding
-            of blockchain development, its related concepts, and fullstack web
-            development
+            2023). I am currently working as a System Engineer in Tata
+            Consultancy Services Limited. I have worked as a Blockchain/Web3
+            Developer Intern at W3Dev Private Limited for four(4) months. I have
+            an in-depth understanding of blockchain development, its related
+            concepts, and fullstack web development
           </p>
 
           <a href="#contact" className="btn btn-primary">
