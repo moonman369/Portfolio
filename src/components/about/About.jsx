@@ -42,7 +42,7 @@ const About = () => {
             <article className="about__card">
               <FaAward className="about__icon" />
               <h5>Academics</h5>
-              <small>8.42 Average CGPA</small>
+              <small>8.99 Average CGPA</small>
             </article>
 
             <article className="about__card">
