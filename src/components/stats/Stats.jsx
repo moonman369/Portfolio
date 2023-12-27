@@ -20,7 +20,8 @@ const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
 const octokit = new Octokit({
   auth: REACT_APP_GITHUB_PAT,
 });
-const LEETCODE_API_ENDPOINT = `https://leetcode-api.cyclic.app/${REACT_APP_USERNAME}`;
+const LEETCODE_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/leetcode/${REACT_APP_USERNAME}`;
+const GITHUB_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/github/${REACT_APP_USERNAME}`;
 
 let cookieExpiry = new Date();
 cookieExpiry.setDate(cookieExpiry.getDate() + 30 * 24 * 60 * 60);
@@ -46,41 +47,54 @@ const fetchGitHubProfile = async () => {
 
   console.log("Fetching User Data using GitHub API...");
 
-  let { data } = await octokit.request(
-    `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
-  );
-  let repos = data;
-  result.totalRepos += repos.length;
+  const res = await axios.get(GITHUB_API_ENDPOINT, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  for (let repo of repos) {
-    result.totalStars += repo.stargazers_count;
+  console.log(res.datas);
 
-    let res = await octokit.request(
-      `GET /repos/${REACT_APP_USERNAME}/${repo.name}/pulls?state=all`
-    );
-    result.totalPRs += res.data.length;
+  result.totalRepos = res?.data?.props.repos;
+  result.totalCommits = res?.data?.props.commits;
+  result.totalStars = res?.data?.props.stars;
+  result.totalPRs = res?.data?.props.pulls;
 
-    const { data } = await octokit.request(
-      `GET /repos/${REACT_APP_USERNAME}/${repo.name}/commits?per_page=300`
-    );
-    for (let comm of data) {
-      if (comm?.author?.login === `${REACT_APP_USERNAME}`) {
-        result.totalCommits += 1;
-      }
-    }
-  }
+  // let { data } = await octokit.request(
+  //   `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
+  // );
+  // let repos = data;
+  // result.totalRepos += repos.length;
 
-  result.totalPRs +=
-    (
-      await octokit.request(
-        "GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all"
-      )
-    ).data.length +
-    (
-      await octokit.request(
-        "GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all"
-      )
-    ).data.length;
+  // for (let repo of repos) {
+  //   result.totalStars += repo.stargazers_count;
+
+  //   let res = await octokit.request(
+  //     `GET /repos/${REACT_APP_USERNAME}/${repo.name}/pulls?state=all`
+  //   );
+  //   result.totalPRs += res.data.length;
+
+  //   const { data } = await octokit.request(
+  //     `GET /repos/${REACT_APP_USERNAME}/${repo.name}/commits?per_page=300`
+  //   );
+  //   for (let comm of data) {
+  //     if (comm?.author?.login === `${REACT_APP_USERNAME}`) {
+  //       result.totalCommits += 1;
+  //     }
+  //   }
+  // }
+
+  // result.totalPRs +=
+  //   (
+  //     await octokit.request(
+  //       "GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all"
+  //     )
+  //   ).data.length +
+  //   (
+  //     await octokit.request(
+  //       "GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all"
+  //     )
+  //   ).data.length;
 
   console.log("GitHub API call status: Success!");
 
