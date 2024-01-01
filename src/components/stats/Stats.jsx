@@ -53,12 +53,12 @@ const fetchGitHubProfile = async () => {
     },
   });
 
-  console.log(res.datas);
+  console.log(res.data);
 
-  result.totalRepos = res?.data?.props.repos;
-  result.totalCommits = res?.data?.props.commits;
-  result.totalStars = res?.data?.props.stars;
-  result.totalPRs = res?.data?.props.pulls;
+  result.totalRepos = res?.data[0]?.stats.repos;
+  result.totalCommits = res?.data[0]?.stats.commits;
+  result.totalStars = res?.data[0]?.stats.stars;
+  result.totalPRs = res?.data[0]?.stats.pulls;
 
   // let { data } = await octokit.request(
   //   `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
