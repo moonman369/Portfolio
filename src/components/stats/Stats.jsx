@@ -15,13 +15,15 @@ import "react-circular-progressbar/dist/styles.css";
 import { Octokit } from "octokit";
 import { useCookies } from "react-cookie";
 
-const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME } = process.env;
+const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME, REACT_APP_API_KEY } =
+  process.env;
 
 const octokit = new Octokit({
   auth: REACT_APP_GITHUB_PAT,
 });
 const LEETCODE_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/leetcode/${REACT_APP_USERNAME}`;
 const GITHUB_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/github/${REACT_APP_USERNAME}`;
+const GEOLOCATION_API_ENDPOINT = `https://ipgeolocation.abstractapi.com/v1/?api_key=${REACT_APP_API_KEY}`;
 
 let cookieExpiry = new Date();
 cookieExpiry.setDate(cookieExpiry.getDate() + 30 * 24 * 60 * 60);
@@ -34,8 +36,13 @@ const fetchLeetcodeProfile = async () => {
     },
   });
   console.log("Leetcode API call status: Success!");
-  console.log(res?.ipAddress);
+  // console.log(res?.ipAddress);
   return res;
+};
+
+const fetchGeolocation = async () => {
+  const res = await axios.get(GEOLOCATION_API_ENDPOINT);
+  console.log(res.data);
 };
 
 const fetchGitHubProfile = async () => {
@@ -61,62 +68,10 @@ const fetchGitHubProfile = async () => {
   result.totalStars = res?.data[0]?.stats.stars;
   result.totalPRs = res?.data[0]?.stats.pulls;
 
-  // let { data } = await octokit.request(
-  //   `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
-  // );
-  // let repos = data;
-  // result.totalRepos += repos.length;
-
-  // for (let repo of repos) {
-  //   result.totalStars += repo.stargazers_count;
-
-  //   let res = await octokit.request(
-  //     `GET /repos/${REACT_APP_USERNAME}/${repo.name}/pulls?state=all`
-  //   );
-  //   result.totalPRs += res.data.length;
-
-  //   const { data } = await octokit.request(
-  //     `GET /repos/${REACT_APP_USERNAME}/${repo.name}/commits?per_page=300`
-  //   );
-  //   for (let comm of data) {
-  //     if (comm?.author?.login === `${REACT_APP_USERNAME}`) {
-  //       result.totalCommits += 1;
-  //     }
-  //   }
-  // }
-
-  // result.totalPRs +=
-  //   (
-  //     await octokit.request(
-  //       "GET /repos/Ayush-Panwar/eladrProtocolFrontend/pulls?state=all"
-  //     )
-  //   ).data.length +
-  //   (
-  //     await octokit.request(
-  //       "GET /repos/eduladder/eladrProtocolFrontend/pulls?state=all"
-  //     )
-  //   ).data.length;
-
   console.log("GitHub API call status: Success!");
 
   return result;
 };
-
-const fetchGitCommitsAndStars = async () => {
-  let totalStars = 0;
-  let { data } = await octokit.request(
-    `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
-  );
-  let repos = data;
-
-  for (let repo in repos) {
-    totalStars += repo.stargazers_count;
-  }
-
-  return { totalRepos: repos.length, totalStars: totalStars };
-};
-
-const fetchGitStars = async () => {};
 
 const Stats = () => {
   const [cookies, setCookies] = useCookies({
@@ -128,24 +83,6 @@ const Stats = () => {
   });
   const [leetcodeStats, setLeetcodeStats] = useState({});
   const [gitHubStats, setGitHubStats] = useState({});
-
-  const fetchGitCommitsAndStars = async () => {
-    let totalStars = 0;
-    let { data } = await octokit.request(
-      `GET /users/${REACT_APP_USERNAME}/repos?per_page=300`
-    );
-    let repos = data;
-
-    for (let repo in repos) {
-      totalStars += repo.stargazers_count;
-    }
-
-    const result = { totalRepos: repos.length, totalStars: totalStars };
-
-    setGitHubStats(...gitHubStats, ...result);
-
-    return;
-  };
 
   useEffect(() => {
     fetchLeetcodeProfile().then((res) => {
@@ -183,6 +120,8 @@ const Stats = () => {
         priority: "High",
       });
     });
+
+    fetchGeolocation();
   }, []);
 
   return (
