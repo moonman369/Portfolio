@@ -34,6 +34,7 @@ const fetchLeetcodeProfile = async () => {
     },
   });
   console.log("Leetcode API call status: Success!");
+  console.log(res?.ipAddress);
   return res;
 };
 
