@@ -26,8 +26,9 @@ const Contact = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
     try {
-      const verificationResult = await verifyEmail(form.current.email.value);
-      console.log(verificationResult);
+      // const verificationResult = await verifyEmail(form.current.email.value);
+      // console.log(verificationResult);
+      const verificationResult = true;
       if (verificationResult) {
         emailjs
           .sendForm(
