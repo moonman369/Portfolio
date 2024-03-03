@@ -3,7 +3,8 @@ import emailjs from "emailjs-com";
 import "./contact.css";
 import { TfiEmail } from "react-icons/tfi";
 import { FaTelegramPlane } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaGithub } from "react-icons/fa";
+import { IoLogoLinkedin } from "react-icons/io5";
 import { NotificationManager } from "react-notifications";
 import axios from "axios";
 
@@ -69,6 +70,27 @@ const Contact = () => {
       <div className="container contact__container">
         <div className="contact__options">
           <article className="contact__option">
+            <FaGithub className="contact__option-icon" />
+            <h4>GitHub</h4>
+            <h5>moonman369</h5>
+            <a href="https://github.com/moonman369" target="_blank">
+              Check My Profile!
+            </a>
+          </article>
+
+          <article className="contact__option">
+            <IoLogoLinkedin className="contact__option-icon" />
+            <h4>LinkedIN</h4>
+            <h5>Ayan Maiti</h5>
+            <a
+              href="https://www.linkedin.com/in/ayan-maiti-5b4332233/"
+              target="_blank"
+            >
+              Check My Profile!
+            </a>
+          </article>
+
+          <article className="contact__option">
             <TfiEmail className="contact__option-icon" />
             <h4>Email</h4>
             <h5>mightyayan369@gmail.com</h5>
@@ -77,14 +99,14 @@ const Contact = () => {
             </a>
           </article>
 
-          <article className="contact__option">
+          {/* <article className="contact__option">
             <FaTelegramPlane className="contact__option-icon" />
             <h4>Telegram</h4>
             <h5>@moonman369</h5>
             <a href="https://t.me/moonman369" target="_blank">
               Send a message
             </a>
-          </article>
+          </article> */}
 
           <article className="contact__option">
             <FaWhatsapp className="contact__option-icon" />
