@@ -5,8 +5,8 @@ import useInterval from "@use-it/interval";
 const VALID_CHARS = `アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+~}{|:?><''\"`;
 const STREAM_MUTATION_ODDS = 0.05;
 
-const MIN_STREAM_SIZE = 20;
-const MAX_STREAM_SIZE = 60;
+const MIN_STREAM_SIZE = 70;
+const MAX_STREAM_SIZE = 110;
 
 const MIN_INTERVAL_DELAY = 40;
 const MAX_INTERVAL_DELAY = 90;
