@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./stats.css";
-import { GoCheck } from "react-icons/go";
 import { MdWorkOutline } from "react-icons/md";
 import { FiExternalLink } from "react-icons/fi";
 import { FaHackerrank } from "react-icons/fa";
@@ -15,14 +14,20 @@ import "react-circular-progressbar/dist/styles.css";
 import { Octokit } from "octokit";
 import { useCookies } from "react-cookie";
 
-const { REACT_APP_GITHUB_PAT, REACT_APP_USERNAME, REACT_APP_API_KEY } =
-  process.env;
+const {
+  REACT_APP_GITHUB_PAT,
+  REACT_APP_USERNAME,
+  REACT_APP_API_KEY,
+  REACT_APP_PORTFOLIO_API_HOSTNAME,
+  REACT_APP_PORTFOLIO_API_LEETCODE_ENDPOINT,
+  REACT_APP_PORTFOLIO_API_GITHUB_ENDPOINT,
+} = process.env;
 
 const octokit = new Octokit({
   auth: REACT_APP_GITHUB_PAT,
 });
-const LEETCODE_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/leetcode/${REACT_APP_USERNAME}`;
-const GITHUB_API_ENDPOINT = `https://portfolio-stats-api.cyclic.app/github/${REACT_APP_USERNAME}`;
+const LEETCODE_API_ENDPOINT = `${REACT_APP_PORTFOLIO_API_HOSTNAME}${REACT_APP_PORTFOLIO_API_LEETCODE_ENDPOINT}${REACT_APP_USERNAME}`;
+const GITHUB_API_ENDPOINT = `${REACT_APP_PORTFOLIO_API_HOSTNAME}${REACT_APP_PORTFOLIO_API_GITHUB_ENDPOINT}${REACT_APP_USERNAME}`;
 const GEOLOCATION_API_ENDPOINT = `https://ipgeolocation.abstractapi.com/v1/?api_key=${REACT_APP_API_KEY}`;
 
 let cookieExpiry = new Date();

@@ -16,6 +16,7 @@
     "icons": "^1.0.0",
     "morgan": "^1.10.0",
     "octokit": "^2.0.11",
+    "pf": "file:",
     "react": "^18.2.0",
     "react-circular-progressbar": "^2.1.0",
     "react-cookie": "^4.1.1",
