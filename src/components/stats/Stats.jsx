@@ -147,12 +147,12 @@ const Stats = () => {
           <div className="stat_list">
             <CircularProgressbar
               className="stat__circprogress"
-              value={leetcodeStats?.totalSolved}
-              maxValue={leetcodeStats?.totalQuestions}
+              value={leetcodeStats?.totalSolved ?? 0}
+              maxValue={leetcodeStats?.totalQuestions ?? 0}
               strokeWidth={5}
               text={`${(
-                (leetcodeStats?.totalSolved * 100) /
-                leetcodeStats?.totalQuestions
+                ((leetcodeStats?.totalSolved ?? 0) * 100) /
+                (leetcodeStats?.totalQuestions ?? 1)
               ).toFixed(2)} %`}
               styles={buildStyles({
                 pathColor: `rgb(121, 255, 244)`,
@@ -179,7 +179,7 @@ const Stats = () => {
           <div className="stat__list">
             <span className="stat__key stat__key-easy">Easy</span>
             <span className="stat_val">
-              {leetcodeStats?.easySolved} / {leetcodeStats?.totalEasy}
+              {leetcodeStats?.easySolved ?? 0} / {leetcodeStats?.totalEasy ?? 0}
             </span>
             <progress
               className="stat__progress stat__progress-easy"
@@ -190,25 +190,28 @@ const Stats = () => {
           <div className="stat__list">
             <span className="stat__key stat__key-medi">Medium</span>
             <span className="stat_val">
-              {leetcodeStats?.mediumSolved + 20 ??
-                cookies.leetcodeCookie.mediumSolved + 20}{" "}
+              {leetcodeStats?.mediumSolved ??
+                cookies.leetcodeCookie?.mediumSolved ??
+                0}{" "}
               /{" "}
-              {leetcodeStats?.totalMedium ?? cookies.leetcodeStats?.totalMedium}
+              {leetcodeStats?.totalMedium ??
+                cookies.leetcodeStats?.totalMedium ??
+                0}
             </span>
             <progress
               className="stat__progress stat__progress-medi"
-              value={leetcodeStats?.mediumSolved + 20}
+              value={leetcodeStats?.mediumSolved}
               max={leetcodeStats?.totalMedium}
             />
           </div>
           <div className="stat__list">
             <span className="stat__key stat__key-hard">Hard</span>
             <span className="stat_val">
-              {leetcodeStats?.hardSolved + 10} / {leetcodeStats?.totalHard}
+              {leetcodeStats?.hardSolved ?? 0} / {leetcodeStats?.totalHard ?? 0}
             </span>
             <progress
               className="stat__progress stat__progress-hard"
-              value={leetcodeStats?.hardSolved + 10}
+              value={leetcodeStats?.hardSolved}
               max={leetcodeStats?.totalHard}
             />
           </div>
