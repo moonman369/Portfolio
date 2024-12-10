@@ -83,6 +83,13 @@ const Experience = () => {
             <article className="experience__details">
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
+                <h4>Spring Boot</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
                 <h4>MySQL</h4>
                 <small className="text-light">Intermediate</small>
               </div>
@@ -91,13 +98,6 @@ const Experience = () => {
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
                 <h4>ExpressJS</h4>
-                <small className="text-light">Intermediate</small>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Spring Boot</h4>
                 <small className="text-light">Intermediate</small>
               </div>
             </article>
@@ -132,8 +132,29 @@ const Experience = () => {
           </div>
         </div>
         <div className="experience__web3">
-          <h3>Web3 Technologies</h3>
+          <h3>Web3 / Cloud</h3>
           <div className="experience__content">
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Azure Integration Services</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Azure Service Bus</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icon" />
+              <div>
+                <h4>Azure App Insights</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
             <article className="experience__details">
               <BsPatchCheckFill className="experience__details-icon" />
               <div>
@@ -167,20 +188,6 @@ const Experience = () => {
               <div>
                 <h4>Chainlink</h4>
                 <small className="text-light">Intermediate</small>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Metamask</h4>
-                <small className="text-light">Intermediate</small>
-              </div>
-            </article>
-            <article className="experience__details">
-              <BsPatchCheckFill className="experience__details-icon" />
-              <div>
-                <h4>Web3Auth</h4>
-                <small className="text-light">Beginner</small>
               </div>
             </article>
             <article className="experience__details">

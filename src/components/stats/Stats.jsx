@@ -8,6 +8,7 @@ import { BsStar } from "react-icons/bs";
 import { IoLogoGoogle } from "react-icons/io";
 import { SiEthereum, SiHiveBlockchain } from "react-icons/si";
 import { RiGitRepositoryCommitsLine } from "react-icons/ri";
+import { VscAzure } from "react-icons/vsc";
 import axios from "axios";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -292,6 +293,16 @@ const Stats = () => {
                 Internship, W3 Dev Private Limited <FiExternalLink />
               </a>
             </li>
+            <li>
+              <VscAzure className="stat__list-icon-certificate azure" />
+              <a
+                href="https://drive.google.com/file/d/1zz9vJ3r2AzDdWC6fPUIjqWRv_RYGvjyE/view?usp=sharing"
+                target="_blank"
+              >
+                Microsoft AZ-900 Certification <FiExternalLink />
+              </a>
+            </li>
+
             <li>
               <SiHiveBlockchain className="stat__list-icon-certificate block" />
               <a
