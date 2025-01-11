@@ -41,8 +41,9 @@ const fetchLeetcodeProfile = async () => {
       "Content-Type": "application/json",
     },
   });
+  // const res = {};
   console.log("Leetcode API call status: Success!");
-  // console.log(res?.ipAddress);
+  console.log(res);
   return res;
 };
 
@@ -85,20 +86,23 @@ const Stats = () => {
     totalCommits: 0,
     totalPRs: 0,
     totalStars: 0,
-    leetcodeCookie: "",
+    leetcodeCookie: {},
   });
   const [leetcodeStats, setLeetcodeStats] = useState({});
   const [gitHubStats, setGitHubStats] = useState({});
 
   useEffect(() => {
     fetchLeetcodeProfile().then((res) => {
-      // console.log(cookies.leetcodeCookie)
+      // console.log(cookies.leetcodeCookie);
       setLeetcodeStats(res.data);
-      setCookies("leetcodeCookie", JSON.stringify(res.data), {
-        path: "/",
-        expires: cookieExpiry,
-        priority: "High",
-      });
+      // console.log("COOKIE", cookies?.leetcodeCookie);
+      if (res?.status === 200) {
+        setCookies("leetcodeCookie", res.data, {
+          path: "/",
+          expires: cookieExpiry,
+          priority: "High",
+        });
+      }
     });
 
     fetchGitHubProfile().then((res) => {
@@ -148,12 +152,25 @@ const Stats = () => {
           <div className="stat_list">
             <CircularProgressbar
               className="stat__circprogress"
-              value={leetcodeStats?.totalSolved ?? 0}
-              maxValue={leetcodeStats?.totalQuestions ?? 0}
+              value={
+                leetcodeStats?.totalSolved ??
+                cookies?.leetcodeCookie?.totalSolved ??
+                0
+              }
+              maxValue={
+                leetcodeStats?.totalQuestions ??
+                cookies?.leetcodeCookie?.totalQuestions ??
+                0
+              }
               strokeWidth={5}
               text={`${(
-                ((leetcodeStats?.totalSolved ?? 0) * 100) /
-                (leetcodeStats?.totalQuestions ?? 1)
+                ((leetcodeStats?.totalSolved ??
+                  cookies?.leetcodeCookie?.totalSolved ??
+                  0) *
+                  100) /
+                (leetcodeStats?.totalQuestions ??
+                  cookies?.leetcodeCookie?.totalQuestions ??
+                  1)
               ).toFixed(2)} %`}
               styles={buildStyles({
                 pathColor: `rgb(121, 255, 244)`,
@@ -167,12 +184,18 @@ const Stats = () => {
                 <span className="stat__desc-sp">Solved&nbsp;</span>
                 <span className="stat__key-total">
                   {" "}
-                  {leetcodeStats?.totalSolved}
+                  {leetcodeStats?.totalSolved ??
+                    cookies?.leetcodeCookie?.totalSolved ??
+                    0}
                 </span>
               </span>
               <span>
                 <span className="stat__desc-sp">Rank&nbsp;</span>
-                <span className="stat__key-rank">{leetcodeStats?.ranking}</span>
+                <span className="stat__key-rank">
+                  {leetcodeStats?.ranking ??
+                    cookies?.leetcodeCookie?.ranking ??
+                    0}
+                </span>
               </span>
             </span>
           </div>
@@ -180,12 +203,26 @@ const Stats = () => {
           <div className="stat__list">
             <span className="stat__key stat__key-easy">Easy</span>
             <span className="stat_val">
-              {leetcodeStats?.easySolved ?? 0} / {leetcodeStats?.totalEasy ?? 0}
+              {leetcodeStats?.easySolved ??
+                cookies?.leetcodeCookie?.easySolved ??
+                0}{" "}
+              /{" "}
+              {leetcodeStats?.totalEasy ??
+                cookies?.leetcodeCookie?.totalEasy ??
+                0}
             </span>
             <progress
               className="stat__progress stat__progress-easy"
-              value={leetcodeStats?.easySolved}
-              max={leetcodeStats?.totalEasy}
+              value={
+                leetcodeStats?.easySolved ??
+                cookies?.leetcodeCookie?.easySolved ??
+                0
+              }
+              max={
+                leetcodeStats?.totalEasy ??
+                cookies?.leetcodeCookie?.totalEasy ??
+                0
+              }
             />
           </div>
           <div className="stat__list">
@@ -196,24 +233,46 @@ const Stats = () => {
                 0}{" "}
               /{" "}
               {leetcodeStats?.totalMedium ??
-                cookies.leetcodeStats?.totalMedium ??
+                cookies?.leetcodeCookie?.totalMedium ??
                 0}
             </span>
             <progress
               className="stat__progress stat__progress-medi"
-              value={leetcodeStats?.mediumSolved}
-              max={leetcodeStats?.totalMedium}
+              value={
+                leetcodeStats?.mediumSolved ??
+                cookies.leetcodeCookie?.mediumSolved ??
+                0
+              }
+              max={
+                leetcodeStats?.totalMedium ??
+                cookies?.leetcodeCookie?.totalMedium ??
+                0
+              }
             />
           </div>
           <div className="stat__list">
             <span className="stat__key stat__key-hard">Hard</span>
             <span className="stat_val">
-              {leetcodeStats?.hardSolved ?? 0} / {leetcodeStats?.totalHard ?? 0}
+              {leetcodeStats?.hardSolved ??
+                cookies?.leetcodeCookie?.hardSolved ??
+                0}{" "}
+              /{" "}
+              {leetcodeStats?.totalHard ??
+                cookies?.leetcodeCookie?.totalHard ??
+                0}
             </span>
             <progress
               className="stat__progress stat__progress-hard"
-              value={leetcodeStats?.hardSolved}
-              max={leetcodeStats?.totalHard}
+              value={
+                leetcodeStats?.hardSolved ??
+                cookies?.leetcodeCookie?.hardSolved ??
+                0
+              }
+              max={
+                leetcodeStats?.totalHard ??
+                cookies?.leetcodeCookie?.totalHard ??
+                0
+              }
             />
           </div>
         </article>
