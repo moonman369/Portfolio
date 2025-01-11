@@ -13,9 +13,10 @@
 }
 
 .vercel__card {
-  border-radius: 2rem 2rem 2.7rem 2rem;
+  border-radius: 2rem 2rem 2rem 2rem;
   padding-top: 2rem;
-  width: calc(100.5%);
+  /* padding: 0.5rem; */
+  width: calc(100%);
   /* height: calc(44.8%); */
   overflow: -moz-hidden-unscrollable;
 }
