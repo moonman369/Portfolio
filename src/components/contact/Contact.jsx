@@ -93,8 +93,12 @@ const Contact = () => {
           <article className="contact__option">
             <TfiEmail className="contact__option-icon" />
             <h4>Email</h4>
-            <h5>mightyayan369@gmail.com</h5>
-            <a href="mailto:mightyayan369@gmail.com" target="_blank">
+            <h5>ayanofficial31012001@gmail.com</h5>
+            <a
+              href="mailto:ayanofficial31012001@gmail.com
+"
+              target="_blank"
+            >
               Send a message
             </a>
           </article>
