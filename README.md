@@ -13,7 +13,7 @@
 </div>
 
 <p align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/1352/1352280.png" alt="Portfolio Banner" width="100%"/>
+  <img src="https://cdn-icons-png.flaticon.com/512/1352/1352280.png" alt="Portfolio Banner" width="40%"/>
 </p>
 
 ## 📋 Overview
