@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# 💻 Ayan Maiti | Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express"/>
+</div>
 
-## Available Scripts
+<div align="center">
+  <h3><a href="https://moonman.in" target="_blank">✨ Live Demo: moonman.in</a></h3>
+</div>
 
-In the project directory, you can run:
+<p align="center">
+  <img src="https://github.com/moonman369/Portfolio/blob/main/src/assets/portfolio-banner.png" alt="Portfolio Banner" width="100%"/>
+</p>
 
-### `npm start`
+## 📋 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A modern, responsive developer portfolio website showcasing my skills, projects, and professional experience. The site features a sleek, dark-themed UI with Matrix-inspired interactive elements, dynamic GitHub and LeetCode stat integration, and a comprehensive display of my work in full-stack and blockchain development.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Features
 
-### `npm test`
+- **🎯 Interactive UI**: Sleek, responsive design with Matrix-inspired animations
+- **📊 Live Stats Integration**: Real-time display of GitHub and LeetCode statistics
+- **🚀 Project Showcase**: Comprehensive portfolio section featuring my latest work
+- **📝 Skills & Experience**: Detailed breakdown of technical skills and competencies
+- **📱 Fully Responsive**: Optimized for all device sizes with adaptive layouts
+- **📬 Contact Form**: Integrated email contact functionality
+- **📜 Resume/CV**: Direct download access to my latest CV
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Technologies Used
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React.js
+- CSS3 with custom animations
+- React Icons
+- React Circular Progressbar
+- React Notifications
+- Email.js for contact form
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend/API Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js
+- Express.js
+- HTTP Proxy Middleware
+- GitHub API (via Octokit)
+- LeetCode API
+- Geolocation API
 
-### `npm run eject`
+### State Management & Utilities
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React Hooks
+- React Cookies
+- Axios for HTTP requests
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔍 Core Components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Header**: Main introduction with animated elements
+- **About**: Personal background and quick statistics
+- **Experience**: Detailed skills breakdown by category
+- **Stats**: GitHub, LeetCode, and certification showcase
+- **Portfolio**: Showcase of recent projects with live demos
+- **Contact**: Multiple contact methods and form
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 API Integrations
 
-## Learn More
+- **GitHub API**: Fetches repositories, commits, PRs, and stars
+- **LeetCode API**: Retrieves coding problem statistics
+- **Geolocation API**: Detects user location for enhanced experience
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧩 Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+/
+├── public/               # Static files
+├── src/                  # Source files
+│   ├── assets/           # Images and static resources
+│   ├── components/       # UI components
+│   │   ├── about/        # About section
+│   │   ├── contact/      # Contact section
+│   │   ├── experience/   # Experience section
+│   │   ├── footer/       # Footer component
+│   │   ├── header/       # Header & hero section
+│   │   ├── matrix-rain/  # Matrix animation effect
+│   │   ├── nav/          # Navigation component
+│   │   ├── portfolio/    # Portfolio showcase
+│   │   ├── stats/        # GitHub & LeetCode stats
+│   │   └── testimonials/ # Testimonials section
+│   ├── App.jsx           # Main application component
+│   ├── index.js          # Application entry point
+│   ├── index.css         # Global styles
+│   └── setupProxy.js     # API proxy configuration
+└── package.json          # Project dependencies
+```
 
-### Code Splitting
+## 🚀 Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Prerequisites
 
-### Analyzing the Bundle Size
+- Node.js (v14+)
+- npm or yarn
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation
 
-### Making a Progressive Web App
+1. Clone the repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   git clone https://github.com/moonman369/Portfolio.git
+   cd Portfolio
+   ```
 
-### Advanced Configuration
+2. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-### Deployment
+3. Create a `.env` file in the root directory with your API keys:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```
+   REACT_APP_GITHUB_PAT=your_github_personal_access_token
+   REACT_APP_USERNAME=your_github_username
+   REACT_APP_API_KEY=your_geolocation_api_key
+   REACT_APP_PORTFOLIO_API_HOSTNAME=your_api_hostname
+   REACT_APP_PORTFOLIO_API_LEETCODE_ENDPOINT=your_leetcode_endpoint
+   REACT_APP_PORTFOLIO_API_GITHUB_ENDPOINT=your_github_endpoint
+   ```
 
-### `npm run build` fails to minify
+4. Start the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+### Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+## 📄 License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 About Me
+
+I'm Ayan Maiti, a Software Engineer at Tata Consultancy Services with experience in full-stack web development and blockchain technologies. I specialize in React.js, Node.js, and Solidity development.
+
+## 📬 Contact
+
+- **Email**: [ayanofficial31012001@gmail.com](mailto:ayanofficial31012001@gmail.com)
+- **GitHub**: [moonman369](https://github.com/moonman369)
+- **LinkedIn**: [Ayan Maiti](https://www.linkedin.com/in/ayan-maiti-5b4332233/)
+- **LeetCode**: [moonman369](https://leetcode.com/moonman369)
+
+---
+
+<div align="center">
+  <p>Designed & Developed with ❤️ by Ayan Maiti</p>
+  <p>© 2023-2025 All Rights Reserved</p>
+</div>

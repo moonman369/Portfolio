@@ -1,5 +1,6 @@
 import React from "react";
 import "./portfolio.css";
+import blinkmart from "../../assets/blinkmart.png";
 import msnd from "../../assets/meshnode.png";
 import yegpt from "../../assets/yegpt.png";
 import lyriks from "../../assets/lyriks.png";
@@ -10,11 +11,17 @@ import img2 from "../../assets/defund2.png";
 import img3 from "../../assets/selfdrvcar.png";
 import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/anychat.png";
-import img6 from "../../assets/dicey.png";
 import pingbot from "../../assets/pingbot.png";
 import apixi from "../../assets/Capture.PNG";
 
 const data = [
+  {
+    id: 7,
+    image: blinkmart,
+    title: "BlinkMart - Fully Functional Quick Commerce Platform",
+    github: "https://github.com/moonman369/BlinkMart-Client",
+    demo: "https://blinkmart.projects.moonman.in",
+  },
   {
     id: 0,
     image: msnd,
@@ -108,13 +115,6 @@ const data = [
     title: "AnyChat - Anonymous messaging app",
     github: "https://github.com/moonman369/AnyChat",
     demo: "https://anychat.cyclic.app/",
-  },
-  {
-    id: 7,
-    image: img6,
-    title: "Dicey - An Interactive Game of Chance",
-    github: "https://github.com/moonman369/Dicey",
-    demo: "https://moonman369.github.io/Dicey/",
   },
 ];
 
