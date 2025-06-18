@@ -13,7 +13,7 @@
 </div>
 
 <p align="center">
-  <img src="https://github.com/moonman369/Portfolio/blob/main/src/assets/portfolio-banner.png" alt="Portfolio Banner" width="100%"/>
+  <img src="https://cdn-icons-png.flaticon.com/512/1352/1352280.png" alt="Portfolio Banner" width="100%"/>
 </p>
 
 ## 📋 Overview
