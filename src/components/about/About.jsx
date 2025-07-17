@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./about.css";
-import ABT from "../../assets/me-about.jpg";
 import { BsCodeSlash } from "react-icons/bs";
 import { FaAward } from "react-icons/fa";
 import { VscFolderLibrary } from "react-icons/vsc";
