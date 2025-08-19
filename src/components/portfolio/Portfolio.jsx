@@ -20,7 +20,7 @@ const data = [
     id: 0,
     image: codesage,
     title: "CodeSage: AI powered code navigator (Under development)",
-    github: "https://github.com/moonman369/CodeSage",
+    github: "https://github.com/moonman369/CodeSage-Service",
     demo: "https://www.linkedin.com/search/results/content/?fromMember=%5B%22ACoAADo_V9gBWpUhotMGBIKss3IypOU4FPK0Q3E%22%5D&keywords=%23codesage&origin=FACETED_SEARCH&sid=3%3B)&sortBy=%22date_posted%22",
   },
   {
