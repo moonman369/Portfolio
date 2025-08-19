@@ -13,67 +13,46 @@ import img4 from "../../assets/raffle.png";
 import img5 from "../../assets/anychat.png";
 import pingbot from "../../assets/pingbot.png";
 import apixi from "../../assets/Capture.PNG";
+import codesage from "../../assets/codesage.png";
 
 const data = [
   {
-    id: 7,
+    id: 0,
+    image: codesage,
+    title: "CodeSage: AI powered code navigator (Under development)",
+    github: "https://github.com/moonman369/CodeSage",
+    demo: "https://www.linkedin.com/search/results/content/?fromMember=%5B%22ACoAADo_V9gBWpUhotMGBIKss3IypOU4FPK0Q3E%22%5D&keywords=%23codesage&origin=FACETED_SEARCH&sid=3%3B)&sortBy=%22date_posted%22",
+  },
+  {
+    id: 1,
     image: blinkmart,
     title: "BlinkMart - Fully Functional Quick Commerce Platform",
     github: "https://github.com/moonman369/BlinkMart-Client",
     demo: "https://blinkmart.projects.moonman.in",
   },
   {
-    id: 0,
-    image: msnd,
-    title:
-      "MeshNode - Decentralized Q&A Platform (Chainlink Hackathon Project)",
-    github: "https://github.com/moonman369/MeshNode",
-    demo: "https://mesh-node.vercel.app/",
-  },
-  {
-    id: 1,
-    image: img1,
-    title: "AVAX Gods - NFT Card Game",
-    github: "https://github.com/moonman369/AVAX-Gods-Frontend",
-    demo: "https://avaxgodsonline.netlify.app/",
-  },
-  {
     id: 2,
-    image: img2,
-    title: "DeFund: Decentralized Crowdfunding",
-    github: "https://github.com/moonman369/DeFund",
-    demo: "https://defund.netlify.app/",
-  },
-  {
-    id: 1,
     image: pingbot,
     title: "Ping-Bot-v0: Golang based AI Discord Chat Bot",
     github: "https://github.com/moonman369/Go-Discord-Bot",
     demo: "https://top.gg/bot/1134185454502170694",
   },
   {
-    id: 1,
+    id: 3,
     image: apixi,
     title: "Apixi: AI Image generator and Sharing platform (uses Dall-E)",
     github: "https://github.com/moonman369/ApixiClient",
     demo: "https://apixi.vercel.app/",
   },
   {
-    id: 1,
-    image: everif,
-    title: "GO Email Verifier - Golang based email address domain verifier API",
-    github: "https://github.com/moonman369/Go-Email-Verifier",
-    demo: "https://go-email-verifier.cleverapps.io/",
-  },
-  {
-    id: 3,
+    id: 4,
     image: yegpt,
     title: "YeGPT - GPT-4 based Kanye West Chatbot",
     github: "https://github.com/moonman369/YeGPT",
     demo: "https://yegpt-0.vercel.app/",
   },
   {
-    id: 3,
+    id: 5,
     image: tvrs,
     title:
       "TweetVerse - A Decentralized Twitter Clone with Web2.0 authorization support.",
@@ -81,37 +60,58 @@ const data = [
     demo: "https://tweetverse.vercel.app/",
   },
   {
-    id: 3,
+    id: 6,
+    image: msnd,
+    title:
+      "MeshNode - Decentralized Q&A Platform (Chainlink Hackathon Project)",
+    github: "https://github.com/moonman369/MeshNode",
+    demo: "https://mesh-node.vercel.app/",
+  },
+  {
+    id: 7,
+    image: img1,
+    title: "AVAX Gods - NFT Card Game",
+    github: "https://github.com/moonman369/AVAX-Gods-Frontend",
+    demo: "https://avaxgodsonline.netlify.app/",
+  },
+  {
+    id: 8,
+    image: img2,
+    title: "DeFund: Decentralized Crowdfunding",
+    github: "https://github.com/moonman369/DeFund",
+    demo: "https://defund.netlify.app/",
+  },
+  {
+    id: 9,
+    image: everif,
+    title: "GO Email Verifier - Golang based email address domain verifier API",
+    github: "https://github.com/moonman369/Go-Email-Verifier",
+    demo: "https://go-email-verifier.cleverapps.io/",
+  },
+  {
+    id: 10,
+    image: img3,
+    title: "AI Based Self Driving Car",
+    github: "https://github.com/moonman369/Self-Driving-AI-Car",
+    demo: "https://github.com/moonman369/Self-Driving-AI-Car",
+  },
+  {
+    id: 11,
     image: lyriks,
     title: "Lyriks - Spotify Clone",
     github: "https://github.com/moonman369/Lyrikx-Music",
     demo: "https://lyriks1.netlify.app/",
   },
   {
-    id: 4,
-    image: img3,
-    title: "AI Based Self Driving Car",
-    github: "https://github.com/moonman369/Self-Driving-AI-Car",
-    demo: "https://github.com/moonman369/Self-Driving-AI-Car",
-  },
-  // {
-  //   id: 3,
-  //   image: img3,
-  //   title: "MoonFarm - Defi Staking Platform",
-  //   github: "https://github.com/moonman369/MoonFi",
-  //   demo: "https://github.com",
-  // },
-  {
-    id: 5,
+    id: 12,
     image: img4,
     title: "Ethereum Raffle: Decentralized Lottery",
     github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
     demo: "https://ethereum-raffle-dapp.vercel.app/",
   },
   {
-    id: 6,
+    id: 13,
     image: img5,
-
     title: "AnyChat - Anonymous messaging app",
     github: "https://github.com/moonman369/AnyChat",
     demo: "https://anychat.cyclic.app/",
