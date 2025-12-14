@@ -4,6 +4,7 @@ import { BsCodeSlash } from "react-icons/bs";
 import { FaAward } from "react-icons/fa";
 import { VscFolderLibrary } from "react-icons/vsc";
 import MatrixRain from "../matrix-rain/MatrixRain";
+import Logo from "../../assets/logo_cropped.png";
 import useInterval from "@use-it/interval";
 
 const About = () => {
@@ -19,7 +20,8 @@ const About = () => {
         <div className="about__me">
           <div className="about__me-image">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png"
+              // src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png"
+              src={Logo}
               alt="About Me"
               onMouseEnter={() => {
                 setTimeout(() => {
