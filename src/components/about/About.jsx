@@ -58,11 +58,12 @@ const About = () => {
           </div>
 
           <p>
-            I am Ayan Maiti. I am currently working as a System Engineer in Tata
-            Consultancy Services Limited. I have worked as a Blockchain/Web3
-            Developer Intern at W3Dev Private Limited for four(4) months. I have
-            an in-depth understanding of blockchain development, its related
-            concepts, and fullstack web development
+            I am Ayan Maiti, currently working as a System Engineer at Tata
+            Consultancy Services Limited. I specialize in Azure-based systems,
+            microservices, and API integrations, with hands-on experience in the
+            retail domain. Alongside my professional work, I actively build
+            skills in artificial intelligence and adjacent technologies, with a
+            growing focus on intelligent, data-driven systems.
           </p>
 
           <a href="#contact" className="btn btn-primary">
