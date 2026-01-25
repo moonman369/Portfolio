@@ -1,7 +1,7 @@
 .experience__container {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  gap: 5%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2%;
 }
 
 .experience__container > div {
@@ -10,6 +10,9 @@
   border-radius: 2rem;
   border: 1px solid transparent;
   transition: var(--transition);
+  width: auto; /* use grid column widths so all four columns are equal */
+  box-sizing: border-box;
+  font-size: 0.9rem; /* base size for content inside each column (headers keep their explicit size) */
 }
 
 .experience__container > div:hover {
@@ -20,8 +23,10 @@
 
 .experience__container > div h3 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* slightly reduced to tighten spacing */
   color: var(--color-primary);
+  font-size: 1.05rem; /* smaller, cleaner section titles */
+  line-height: 1.2;
 }
 
 .experience__content {
@@ -33,11 +38,39 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  align-items: flex-start; /* align icon and multi-line text at the top */
+}
+
+/* make the text container take remaining space so wrapping doesn't squeeze the icon */
+.experience__details > div {
+  flex: 1 1 auto;
+}
+
+.experience__details h4 {
+  font-size: 0.95em; /* relative to the base so all sections scale uniformly */
+  margin: 0;
+}
+
+.experience__details small {
+  font-size: 0.78em; /* relative to the base */
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .experience__details-icon {
-  margin-top: 6px;
+  flex: 0 0 auto; /* prevent icon from shrinking */
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 2px; /* small offset to line up with text */
   color: var(--color-primary);
+  font-size: 1.05rem; /* explicit size for the icon */
+}
+
+/* ensure the rendered SVG inside react-icons stays at the intended size */
+.experience__details-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 /* ================== MEDIA QUERIES (MEDIUM DEVICES) ==================== */
