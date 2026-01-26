@@ -70,10 +70,10 @@ const fetchGitHubProfile = async () => {
 
   console.log(res.data);
 
-  result.totalRepos = res?.data[0]?.stats.repos;
-  result.totalCommits = res?.data[0]?.stats.commits;
-  result.totalStars = res?.data[0]?.stats.stars;
-  result.totalPRs = res?.data[0]?.stats.pulls;
+  result.totalRepos = res?.data?.stats.repos;
+  result.totalCommits = res?.data?.stats.commits;
+  result.totalStars = res?.data?.stats.stars;
+  result.totalPRs = res?.data?.stats.pulls;
 
   console.log("GitHub API call status: Success!");
 
