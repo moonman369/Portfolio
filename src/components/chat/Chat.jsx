@@ -1,9 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
-import { BiMessageSquareDetail, BiX, BiSend, BiChevronDown } from "react-icons/bi";
+import { BiBrain, BiX, BiSend, BiChevronDown } from "react-icons/bi";
 import "./chat.css";
 
+const { REACT_APP_PORTFOLIO_API_HOSTNAME, REACT_APP_PORTFOLIO_API_CHAT } =
+  process.env;
+
+const CHAT_ENDPOINT = `${REACT_APP_PORTFOLIO_API_HOSTNAME}${REACT_APP_PORTFOLIO_API_CHAT}`;
+
 const STORAGE_KEY = "portfolio_chat_messages";
+const SESSION_STORAGE_KEY = "portfolio_chat_session_id";
 const SUGGESTIONS = [
   "Top backend skills",
   "Projects in AI",
@@ -16,6 +22,9 @@ const PIPELINE_STEPS = [
   "Preparing response...",
 ];
 
+const generateSessionId = () =>
+  `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+
 const escapeHtml = (value = "") =>
   value
     .replace(/&/g, "&amp;")
@@ -27,7 +36,10 @@ const escapeHtml = (value = "") =>
 const markdownToHtml = (markdown = "") => {
   let html = escapeHtml(markdown);
 
-  html = html.replace(/```([\s\S]*?)```/g, (_, code) => `<pre><code>${code.trim()}</code></pre>`);
+  html = html.replace(
+    /```([\s\S]*?)```/g,
+    (_, code) => `<pre><code>${code.trim()}</code></pre>`,
+  );
   html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
   html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
   html = html.replace(/^# (.*)$/gm, "<h1>$1</h1>");
@@ -35,7 +47,10 @@ const markdownToHtml = (markdown = "") => {
   html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
-  html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+  html = html.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noreferrer">$1</a>',
+  );
 
   html = html.replace(/(?:^|\n)- (.*?)(?=\n[^- ]|$)/gs, (block) => {
     const items = block
@@ -72,22 +87,28 @@ const normalizeSources = (sources) => {
   }
 
   return sources
-    .map((source, index) => {
-      if (!source || typeof source !== "object") {
+    .map((document, index) => {
+      if (!document || typeof document !== "object") {
         return null;
       }
 
-      const tags = Array.isArray(source.tags)
-        ? source.tags.filter((tag) => typeof tag === "string" && tag.trim())
-        : [];
+      const metadata =
+        document.metadata && typeof document.metadata === "object"
+          ? document.metadata
+          : {};
+      const tags = [
+        document.category,
+        metadata.domain,
+        metadata.subcategory,
+        metadata.proficiency_level,
+      ].filter((tag) => typeof tag === "string" && tag.trim());
 
       return {
-        id: source.id || `${source.title || "source"}-${index}`,
-        title: source.title || source.name || "Portfolio source",
+        id: document.id || `${document.title || "source"}-${index}`,
+        title: document.title || "Portfolio source",
         description:
-          source.description ||
-          source.summary ||
-          source.excerpt ||
+          document.summary_for_embedding ||
+          document.summary ||
           "Relevant context from the portfolio.",
         tags,
       };
@@ -96,16 +117,11 @@ const normalizeSources = (sources) => {
 };
 
 const renderMessageText = (data) => {
-  if (!data) {
-    return "I could not generate a response just now.";
-  }
-
-  if (typeof data.response === "string" && data.response.trim()) {
-    return data.response;
-  }
-
-  if (typeof data.answer === "string" && data.answer.trim()) {
-    return data.answer;
+  if (data?.status === "success" && typeof data?.data?.summary === "string") {
+    const summary = data.data.summary.trim();
+    if (summary) {
+      return summary;
+    }
   }
 
   return "I could not generate a response just now.";
@@ -115,6 +131,15 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const [sessionId] = useState(() => {
+    try {
+      const storedSessionId = sessionStorage.getItem(SESSION_STORAGE_KEY);
+      return storedSessionId || generateSessionId();
+    } catch (storageError) {
+      console.log(storageError);
+      return generateSessionId();
+    }
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [loadingStepIndex, setLoadingStepIndex] = useState(0);
@@ -140,6 +165,14 @@ const Chat = () => {
   useEffect(() => {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(SESSION_STORAGE_KEY, sessionId);
+    } catch (storageError) {
+      console.log(storageError);
+    }
+  }, [sessionId]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -194,9 +227,13 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await axios.post("/chat", {
-        message: trimmed,
-      });
+      const requestPayload = {
+        prompt: trimmed,
+        sessionId,
+        metadata: {},
+      };
+
+      const { data } = await axios.post(CHAT_ENDPOINT, requestPayload);
 
       setMessages((prev) => [
         ...prev,
@@ -204,12 +241,12 @@ const Chat = () => {
           id: Date.now() + 1,
           role: "assistant",
           text: renderMessageText(data),
-          sources: normalizeSources(data?.sources),
+          sources: normalizeSources(data?.data?.documents),
         },
       ]);
     } catch (requestError) {
       console.log(requestError);
-      setError("Unable to reach query console right now. Please try again.");
+      setError("Unable to reach Moonmind right now. Please try again.");
       setMessages((prev) => [
         ...prev,
         {
@@ -244,23 +281,36 @@ const Chat = () => {
   return (
     <div className="chat">
       <button
-        className="chat__trigger"
+        className={`chat__trigger ${!isOpen ? "chat__trigger-attention" : "chat__trigger-open"}`}
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Close query console" : "Open query console"}
-        title={isOpen ? "Close query console" : "Open query console"}
+        aria-label={isOpen ? "Close Moonmind" : "Open Moonmind"}
+        title={isOpen ? "Close Moonmind" : "Open Moonmind"}
       >
-        {isOpen ? <BiX /> : <BiMessageSquareDetail />}
+        {isOpen ? <BiX /> : <BiBrain />}
       </button>
 
-      {isOpen && <button className="chat__backdrop" onClick={() => setIsOpen(false)} aria-label="Close query console" />}
+      {isOpen && (
+        <button
+          className="chat__backdrop"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close Moonmind"
+        />
+      )}
 
-      <section className={`chat__panel ${isOpen ? "chat__panel-open" : ""}`} aria-hidden={!isOpen}>
+      <section
+        className={`chat__panel ${isOpen ? "chat__panel-open" : ""}`}
+        aria-hidden={!isOpen}
+      >
         <div className="chat__header">
           <div>
-            <h4>Portfolio Query Console</h4>
+            <h4>Moonmind</h4>
             <p>Explore skills, projects, and experience with guided queries.</p>
           </div>
-          <button className="chat__close" onClick={() => setIsOpen(false)} aria-label="Close query console">
+          <button
+            className="chat__close"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close Moonmind"
+          >
             <BiX />
           </button>
         </div>
@@ -299,7 +349,9 @@ const Chat = () => {
                   >
                     View sources
                     <BiChevronDown
-                      className={expandedSources[message.id] ? "chat__sources-open" : ""}
+                      className={
+                        expandedSources[message.id] ? "chat__sources-open" : ""
+                      }
                     />
                   </button>
 
@@ -331,7 +383,11 @@ const Chat = () => {
                 {PIPELINE_STEPS.map((step, index) => (
                   <p
                     key={step}
-                    className={index === loadingStepIndex ? "chat__loading-step-active" : ""}
+                    className={
+                      index === loadingStepIndex
+                        ? "chat__loading-step-active"
+                        : ""
+                    }
                   >
                     {step}
                   </p>
