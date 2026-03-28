@@ -8,6 +8,7 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Testimonials from "./components/testimonials/Testimonials";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+import Chat from "./components/chat/Chat";
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 import "react-notifications/lib/notifications.css";
 
@@ -23,6 +24,7 @@ const App = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <Chat />
       <NotificationContainer />
     </div>
   );
