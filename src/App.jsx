@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
 import About from "./components/about/About";
@@ -13,10 +13,15 @@ import NotificationContainer from "react-notifications/lib/NotificationContainer
 import "react-notifications/lib/notifications.css";
 
 const App = () => {
+  const [isMoonmindOpen, setIsMoonmindOpen] = useState(false);
+
   return (
     <div>
-      <Header />
-      <Nav />
+      <Header onOpenMoonmind={() => setIsMoonmindOpen(true)} />
+      <Nav
+        isMoonmindOpen={isMoonmindOpen}
+        onMoonmindToggle={() => setIsMoonmindOpen((prev) => !prev)}
+      />
       <About />
       <Experience />
       <Stats />
@@ -24,7 +29,7 @@ const App = () => {
       <Testimonials />
       <Contact />
       <Footer />
-      <Chat />
+      <Chat isOpen={isMoonmindOpen} setIsOpen={setIsMoonmindOpen} />
       <NotificationContainer />
     </div>
   );

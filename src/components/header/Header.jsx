@@ -5,7 +5,7 @@ import HeaderSocials from "./HeaderSocials";
 import { useState } from "react";
 import MatrixRain from "../matrix-rain/MatrixRain";
 
-const Header = () => {
+const Header = ({ onOpenMoonmind }) => {
   const [displayMatrix, setDisplayMatrix] = useState(false);
   return (
     <header>
@@ -14,7 +14,7 @@ const Header = () => {
         <h5>Hello I'm</h5>
         <h1>Ayan Maiti</h1>
         <h5 className="text-light">Software Developer</h5>
-        <CTA />
+        <CTA onOpenMoonmind={onOpenMoonmind} />
         <HeaderSocials />
         {/* {displayMatrix ? <MatrixRain customClass="matrix" /> : <div></div>} */}
 
