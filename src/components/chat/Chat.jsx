@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
-import { BiBrain, BiX, BiSend, BiChevronDown } from "react-icons/bi";
+import { BiX, BiSend, BiChevronDown } from "react-icons/bi";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./chat.css";
 
 const { REACT_APP_PORTFOLIO_API_HOSTNAME, REACT_APP_PORTFOLIO_API_CHAT } =
@@ -24,62 +26,6 @@ const PIPELINE_STEPS = [
 
 const generateSessionId = () =>
   `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-
-const escapeHtml = (value = "") =>
-  value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
-const markdownToHtml = (markdown = "") => {
-  let html = escapeHtml(markdown);
-
-  html = html.replace(
-    /```([\s\S]*?)```/g,
-    (_, code) => `<pre><code>${code.trim()}</code></pre>`,
-  );
-  html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
-  html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
-  html = html.replace(/^# (.*)$/gm, "<h1>$1</h1>");
-
-  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
-  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
-  html = html.replace(
-    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noreferrer">$1</a>',
-  );
-
-  html = html.replace(/(?:^|\n)- (.*?)(?=\n[^- ]|$)/gs, (block) => {
-    const items = block
-      .trim()
-      .split("\n")
-      .filter((line) => line.startsWith("- "))
-      .map((line) => `<li>${line.slice(2)}</li>`)
-      .join("");
-    return `<ul>${items}</ul>`;
-  });
-
-  html = html
-    .split(/\n{2,}/)
-    .map((chunk) => {
-      const trimmed = chunk.trim();
-      if (!trimmed) {
-        return "";
-      }
-
-      if (/^<(h1|h2|h3|ul|pre)/.test(trimmed)) {
-        return trimmed;
-      }
-
-      return `<p>${trimmed.replace(/\n/g, "<br />")}</p>`;
-    })
-    .join("");
-
-  return html;
-};
 
 const normalizeSources = (sources) => {
   if (!Array.isArray(sources)) {
@@ -117,9 +63,15 @@ const normalizeSources = (sources) => {
     .filter(Boolean);
 };
 
+const normalizeMarkdownText = (value = "") =>
+  value
+    .replace(/\\r\\n/g, "\n")
+    .replace(/\\n/g, "\n")
+    .replace(/\\t/g, "\t");
+
 const renderMessageText = (data) => {
   if (data?.status === "success" && typeof data?.data?.summary === "string") {
-    const summary = data.data.summary.trim();
+    const summary = normalizeMarkdownText(data.data.summary).trim();
     if (summary) {
       return summary;
     }
@@ -128,8 +80,7 @@ const renderMessageText = (data) => {
   return "I could not generate a response just now.";
 };
 
-const Chat = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Chat = ({ isOpen, setIsOpen }) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [sessionId] = useState(() => {
@@ -290,17 +241,6 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      {!isOpen && (
-        <button
-          className={`chat__trigger ${!isOpen ? "chat__trigger-attention" : "chat__trigger-open"}`}
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Open Moonmind"
-          title="Open Moonmind"
-        >
-          <BiBrain />
-        </button>
-      )}
-
       {isOpen && (
         <button
           className="chat__backdrop"
@@ -341,11 +281,18 @@ const Chat = () => {
             >
               <div className="chat__message-content">
                 {message.role === "assistant" ? (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: markdownToHtml(message.text),
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      a: ({ node: _node, children, ...props }) => (
+                        <a {...props} target="_blank" rel="noreferrer">
+                          {children}
+                        </a>
+                      ),
                     }}
-                  />
+                  >
+                    {message.text || ""}
+                  </ReactMarkdown>
                 ) : (
                   message.text
                 )}
@@ -390,10 +337,14 @@ const Chat = () => {
                               className="chat__source-expand"
                               type="button"
                               onClick={() =>
-                                toggleSourceContent(`${message.id}-${source.id}`)
+                                toggleSourceContent(
+                                  `${message.id}-${source.id}`,
+                                )
                               }
                             >
-                              {expandedSourceContent[`${message.id}-${source.id}`]
+                              {expandedSourceContent[
+                                `${message.id}-${source.id}`
+                              ]
                                 ? "Show less"
                                 : "Show more"}
                             </button>

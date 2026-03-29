@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./nav.css";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
-import { BiBook, BiMessageSquareDetail, BiCodeAlt } from "react-icons/bi";
-import { RiServiceLine } from "react-icons/ri";
-import { Link, scroll, animateScroll } from "react-scroll";
+import {
+  BiBook,
+  BiMessageSquareDetail,
+  BiCodeAlt,
+  BiBrain,
+} from "react-icons/bi";
 import { IoIosStats } from "react-icons/io";
 
-const Nav = () => {
+const Nav = ({ isMoonmindOpen, onMoonmindToggle }) => {
   const [activeNav, setActiveNav] = useState("#");
 
   const handleNav = (to) => {
@@ -49,6 +52,19 @@ const Nav = () => {
       >
         <BiBook />
       </a>
+      <button
+        type="button"
+        className={`nav__moonmind-trigger ${
+          isMoonmindOpen
+            ? "nav__moonmind-trigger-open"
+            : "nav__moonmind-trigger-attention"
+        }`}
+        onClick={onMoonmindToggle}
+        aria-label={isMoonmindOpen ? "Close Moonmind" : "Open Moonmind"}
+        title={isMoonmindOpen ? "Close Moonmind" : "Open Moonmind"}
+      >
+        <BiBrain />
+      </button>
       <a
         href="#stats"
         title="Stats"

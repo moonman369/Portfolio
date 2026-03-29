@@ -1,11 +1,14 @@
 .chat {
     position: fixed;
-    right: 2rem;
-    bottom: 2rem;
+    inset: 0;
     z-index: 14;
+    pointer-events: none;
 }
 
 .chat__trigger {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
     width: 3.2rem;
     height: 3.2rem;
     border-radius: 50%;
@@ -17,7 +20,6 @@
     background: var(--color-primary);
     box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.35);
     transition: var(--transition);
-    position: relative;
     isolation: isolate;
     z-index: 16;
 }
@@ -105,16 +107,22 @@
     background: rgba(0, 0, 0, 0.62);
     border: none;
     cursor: pointer;
+    pointer-events: auto;
     z-index: 14;
 }
 
 .chat__panel {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100dvh;
+    width: auto;
+    height: auto;
     border-radius: 0;
-    background: radial-gradient(circle at top right, rgba(26, 64, 83, 0.42), rgba(7, 11, 22, 0.94) 45%),
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(26, 64, 83, 0.42),
+            rgba(7, 11, 22, 0.94) 45%
+        ),
         rgba(8, 15, 30, 0.88);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -429,27 +437,19 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .chat {
+    .chat__trigger {
         right: 1.1rem;
         bottom: 1.1rem;
-    }
-
-    .chat__panel {
-        width: 100vw;
-        height: 100dvh;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .chat {
+    .chat__trigger {
         right: 0.8rem;
         bottom: 0.8rem;
     }
 
     .chat__panel {
-        width: 100vw;
-        height: 100dvh;
-        max-height: 100dvh;
         border-radius: 0;
         border: none;
     }
