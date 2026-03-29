@@ -107,6 +107,7 @@ const normalizeSources = (sources) => {
         id: document.id || `${document.title || "source"}-${index}`,
         title: document.title || "Portfolio source",
         description:
+          document.content_full ||
           document.summary_for_embedding ||
           document.summary ||
           "Relevant context from the portfolio.",
@@ -144,7 +145,9 @@ const Chat = () => {
   const [error, setError] = useState("");
   const [loadingStepIndex, setLoadingStepIndex] = useState(0);
   const [expandedSources, setExpandedSources] = useState({});
+  const [expandedSourceContent, setExpandedSourceContent] = useState({});
   const messagesEndRef = useRef(null);
+  const SOURCE_PREVIEW_LIMIT = 220;
 
   useEffect(() => {
     try {
@@ -278,16 +281,25 @@ const Chat = () => {
     }));
   };
 
+  const toggleSourceContent = (sourceKey) => {
+    setExpandedSourceContent((prev) => ({
+      ...prev,
+      [sourceKey]: !prev[sourceKey],
+    }));
+  };
+
   return (
     <div className="chat">
-      <button
-        className={`chat__trigger ${!isOpen ? "chat__trigger-attention" : "chat__trigger-open"}`}
-        onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Close Moonmind" : "Open Moonmind"}
-        title={isOpen ? "Close Moonmind" : "Open Moonmind"}
-      >
-        {isOpen ? <BiX /> : <BiBrain />}
-      </button>
+      {!isOpen && (
+        <button
+          className={`chat__trigger ${!isOpen ? "chat__trigger-attention" : "chat__trigger-open"}`}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label="Open Moonmind"
+          title="Open Moonmind"
+        >
+          <BiBrain />
+        </button>
+      )}
 
       {isOpen && (
         <button
@@ -367,7 +379,25 @@ const Chat = () => {
                               ))}
                             </div>
                           )}
-                          <p>{source.description}</p>
+                          <p>
+                            {source.description.length > SOURCE_PREVIEW_LIMIT &&
+                            !expandedSourceContent[`${message.id}-${source.id}`]
+                              ? `${source.description.slice(0, SOURCE_PREVIEW_LIMIT)}...`
+                              : source.description}
+                          </p>
+                          {source.description.length > SOURCE_PREVIEW_LIMIT && (
+                            <button
+                              className="chat__source-expand"
+                              type="button"
+                              onClick={() =>
+                                toggleSourceContent(`${message.id}-${source.id}`)
+                              }
+                            >
+                              {expandedSourceContent[`${message.id}-${source.id}`]
+                                ? "Show less"
+                                : "Show more"}
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -417,16 +447,18 @@ const Chat = () => {
           </div>
 
           <form className="chat__input-row" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about skills, projects, experience..."
-              aria-label="Query"
-            />
-            <button type="submit" disabled={!canSend} aria-label="Send query">
-              <BiSend />
-            </button>
+            <div className="chat__input-wrap">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask about skills, projects, experience..."
+                aria-label="Query"
+              />
+              <button type="submit" disabled={!canSend} aria-label="Send query">
+                <BiSend />
+              </button>
+            </div>
           </form>
         </div>
       </section>
