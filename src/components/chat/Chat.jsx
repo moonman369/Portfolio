@@ -187,7 +187,11 @@ const Chat = ({ isOpen, setIsOpen }) => {
         metadata: {},
       };
 
-      const { data } = await axios.post(CHAT_ENDPOINT, requestPayload);
+      const { data } = await axios.post(CHAT_ENDPOINT, requestPayload, {
+        headers: {
+          password: process.env.REACT_APP_MOONMIND_PASSWORD,
+        },
+      });
 
       setMessages((prev) => [
         ...prev,
