@@ -23,8 +23,8 @@ export default function MatrixRain() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = "#5d60fc";
-      ctx.font = fontSize + "px monospace";
+      ctx.fillStyle = "#3b51f7";
+      ctx.font = `600 ${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
