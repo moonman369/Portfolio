@@ -7,17 +7,30 @@ export default function MatrixRain() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-
-    canvas.width = width;
-    canvas.height = height;
-
     const chars = `アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+~}{|:?><''`;
-    const fontSize = 16;
-    const columns = Math.floor(width / fontSize);
+    const getFontSize = (screenWidth) => (screenWidth <= 768 ? 10 : 14);
 
-    const drops = Array(columns).fill(1);
+    let width = 0;
+    let height = 0;
+    let fontSize = 14;
+    let columns = 0;
+    let drops = [];
+
+    function resetRain() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      fontSize = getFontSize(width);
+      columns = Math.floor(width / fontSize);
+
+      canvas.width = width;
+      canvas.height = height;
+
+      // Start each column at a random row so the effect is already "in progress".
+      drops = Array.from(
+        { length: columns },
+        () => Math.floor(Math.random() * (height / fontSize))
+      );
+    }
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -38,9 +51,15 @@ export default function MatrixRain() {
       }
     }
 
+    resetRain();
+    window.addEventListener("resize", resetRain);
+
     const interval = setInterval(draw, 50);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", resetRain);
+    };
   }, []);
 
   return (
