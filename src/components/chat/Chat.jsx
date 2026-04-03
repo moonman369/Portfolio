@@ -1,9 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
-import { BiX, BiSend, BiChevronDown } from "react-icons/bi";
+import {
+  BiX,
+  BiSend,
+  BiChevronDown,
+  BiExpandAlt,
+  BiCollapseAlt,
+  BiUser,
+} from "react-icons/bi";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./chat.css";
+import moonmindLogo from "../../assets/Gemini_Generated_Image_17lr8q17lr8q17lr_Resized.png";
 
 const { REACT_APP_PORTFOLIO_API_HOSTNAME, REACT_APP_PORTFOLIO_API_CHAT } =
   process.env;
@@ -15,7 +23,7 @@ const SESSION_STORAGE_KEY = "portfolio_chat_session_id";
 const SUGGESTIONS = [
   "Top backend skills",
   "Projects in AI",
-  "Compare skills 2023–2025",
+  "Compare skills 2023-2025",
   "Show recent full-stack projects",
 ];
 const PIPELINE_STEPS = [
@@ -95,6 +103,7 @@ const Chat = ({ isOpen, setIsOpen }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [loadingStepIndex, setLoadingStepIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [expandedSources, setExpandedSources] = useState({});
   const [expandedSourceContent, setExpandedSourceContent] = useState({});
   const messagesEndRef = useRef(null);
@@ -243,32 +252,63 @@ const Chat = ({ isOpen, setIsOpen }) => {
     }));
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setIsExpanded(false);
+  };
+
   return (
     <div className="chat">
       {isOpen && (
         <button
           className="chat__backdrop"
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           aria-label="Close Moonmind"
         />
       )}
 
       <section
-        className={`chat__panel ${isOpen ? "chat__panel-open" : ""}`}
+        className={`chat__panel ${isOpen ? "chat__panel-open" : ""} ${
+          isExpanded ? "chat__panel-expanded" : ""
+        }`}
         aria-hidden={!isOpen}
       >
         <div className="chat__header">
-          <div>
-            <h4>Moonmind</h4>
-            <p>Explore skills, projects, and experience with guided queries.</p>
+          <div className="chat__brand">
+            <img
+              src={moonmindLogo}
+              alt="Moonmind logo"
+              className="chat__brand-logo"
+            />
+            <div className="chat__brand-copy">
+              <h4>Moonmind</h4>
+              <p>
+                Explore skills, projects, and experience with guided,
+                context-aware queries.
+              </p>
+            </div>
           </div>
-          <button
-            className="chat__close"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close Moonmind"
-          >
-            <BiX />
-          </button>
+          <div className="chat__header-actions">
+            <button
+              className="chat__expand"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              aria-label={
+                isExpanded ? "Collapse chat window" : "Expand chat window"
+              }
+              title={isExpanded ? "Collapse" : "Expand"}
+              type="button"
+            >
+              {isExpanded ? <BiCollapseAlt /> : <BiExpandAlt />}
+            </button>
+            <button
+              className="chat__close"
+              onClick={handleClose}
+              aria-label="Close Moonmind"
+              type="button"
+            >
+              <BiX />
+            </button>
+          </div>
         </div>
 
         <div className="chat__messages">
@@ -278,92 +318,123 @@ const Chat = ({ isOpen, setIsOpen }) => {
             </div>
           )}
 
-          {messages.map((message) => (
+          {messages.map((message, index) => (
             <article
               key={message.id}
               className={`chat__message chat__message-${message.role}`}
+              style={{ "--message-index": index }}
             >
-              <div className="chat__message-content">
+              <div className={`chat__avatar chat__avatar-${message.role}`}>
                 {message.role === "assistant" ? (
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    components={{
-                      a: ({ node: _node, children, ...props }) => (
-                        <a {...props} target="_blank" rel="noreferrer">
-                          {children}
-                        </a>
-                      ),
-                    }}
-                  >
-                    {message.text || ""}
-                  </ReactMarkdown>
+                  <img src={moonmindLogo} alt="Moonmind" />
                 ) : (
-                  message.text
+                  <BiUser aria-hidden="true" />
                 )}
               </div>
 
-              {message.role === "assistant" && message.sources?.length > 0 && (
-                <div className="chat__sources">
-                  <button
-                    className="chat__sources-toggle"
-                    type="button"
-                    onClick={() => toggleSource(message.id)}
-                    aria-expanded={Boolean(expandedSources[message.id])}
-                  >
-                    View sources
-                    <BiChevronDown
-                      className={
-                        expandedSources[message.id] ? "chat__sources-open" : ""
-                      }
-                    />
-                  </button>
-
-                  {expandedSources[message.id] && (
-                    <div className="chat__sources-list">
-                      {message.sources.map((source) => (
-                        <div key={source.id} className="chat__source-item">
-                          <h5>{source.title}</h5>
-                          {source.tags.length > 0 && (
-                            <div className="chat__source-tags">
-                              {source.tags.map((tag) => (
-                                <span key={`${source.id}-${tag}`}>{tag}</span>
-                              ))}
-                            </div>
-                          )}
-                          <p>
-                            {source.description.length > SOURCE_PREVIEW_LIMIT &&
-                            !expandedSourceContent[`${message.id}-${source.id}`]
-                              ? `${source.description.slice(0, SOURCE_PREVIEW_LIMIT)}...`
-                              : source.description}
-                          </p>
-                          {source.description.length > SOURCE_PREVIEW_LIMIT && (
-                            <button
-                              className="chat__source-expand"
-                              type="button"
-                              onClick={() =>
-                                toggleSourceContent(
-                                  `${message.id}-${source.id}`,
-                                )
-                              }
-                            >
-                              {expandedSourceContent[
-                                `${message.id}-${source.id}`
-                              ]
-                                ? "Show less"
-                                : "Show more"}
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+              <div className="chat__bubble">
+                <div className="chat__message-content">
+                  {message.role === "assistant" ? (
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        a: ({ node: _node, children, ...props }) => (
+                          <a {...props} target="_blank" rel="noreferrer">
+                            {children}
+                          </a>
+                        ),
+                      }}
+                    >
+                      {message.text || ""}
+                    </ReactMarkdown>
+                  ) : (
+                    message.text
                   )}
                 </div>
-              )}
+
+                {message.role === "assistant" &&
+                  message.sources?.length > 0 && (
+                    <div className="chat__sources">
+                      <button
+                        className="chat__sources-toggle"
+                        type="button"
+                        onClick={() => toggleSource(message.id)}
+                        aria-expanded={Boolean(expandedSources[message.id])}
+                      >
+                        View sources
+                        <BiChevronDown
+                          className={
+                            expandedSources[message.id]
+                              ? "chat__sources-open"
+                              : ""
+                          }
+                        />
+                      </button>
+
+                      {expandedSources[message.id] && (
+                        <div className="chat__sources-list">
+                          {message.sources.map((source) => (
+                            <div key={source.id} className="chat__source-item">
+                              <h5>{source.title}</h5>
+                              {source.tags.length > 0 && (
+                                <div className="chat__source-tags">
+                                  {source.tags.map((tag) => (
+                                    <span key={`${source.id}-${tag}`}>
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              <p>
+                                {source.description.length >
+                                  SOURCE_PREVIEW_LIMIT &&
+                                !expandedSourceContent[
+                                  `${message.id}-${source.id}`
+                                ]
+                                  ? `${source.description.slice(0, SOURCE_PREVIEW_LIMIT)}...`
+                                  : source.description}
+                              </p>
+                              {source.description.length >
+                                SOURCE_PREVIEW_LIMIT && (
+                                <button
+                                  className="chat__source-expand"
+                                  type="button"
+                                  onClick={() =>
+                                    toggleSourceContent(
+                                      `${message.id}-${source.id}`,
+                                    )
+                                  }
+                                >
+                                  {expandedSourceContent[
+                                    `${message.id}-${source.id}`
+                                  ]
+                                    ? "Show less"
+                                    : "Show more"}
+                                </button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+              </div>
             </article>
           ))}
 
           {isLoading && (
             <div className="chat__loading" role="status" aria-live="polite">
+              <div className="chat__loading-head">
+                <img src={moonmindLogo} alt="" className="chat__loading-logo" />
+                <div>
+                  <h5>Moonmind is thinking</h5>
+                  <div className="chat__loading-dots" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              </div>
               <div className="chat__loading-steps">
                 {PIPELINE_STEPS.map((step, index) => (
                   <p

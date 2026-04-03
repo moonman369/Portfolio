@@ -81,13 +81,13 @@ const data = [
     github: "https://github.com/moonman369/DeFund",
     demo: "https://defund.netlify.app/",
   },
-  {
-    id: 9,
-    image: everif,
-    title: "GO Email Verifier - Golang based email address domain verifier API",
-    github: "https://github.com/moonman369/Go-Email-Verifier",
-    demo: "https://go-email-verifier.cleverapps.io/",
-  },
+  // {
+  //   id: 9,
+  //   image: everif,
+  //   title: "GO Email Verifier - Golang based email address domain verifier API",
+  //   github: "https://github.com/moonman369/Go-Email-Verifier",
+  //   demo: "https://go-email-verifier.cleverapps.io/",
+  // },
   {
     id: 10,
     image: img3,
@@ -102,13 +102,13 @@ const data = [
     github: "https://github.com/moonman369/Lyrikx-Music",
     demo: "https://lyriks1.netlify.app/",
   },
-  {
-    id: 12,
-    image: img4,
-    title: "Ethereum Raffle: Decentralized Lottery",
-    github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
-    demo: "https://ethereum-raffle-dapp.vercel.app/",
-  },
+  // {
+  //   id: 12,
+  //   image: img4,
+  //   title: "Ethereum Raffle: Decentralized Lottery",
+  //   github: "https://github.com/moonman369/Ethereum-Raffle-DApp",
+  //   demo: "https://ethereum-raffle-dapp.vercel.app/",
+  // },
   {
     id: 13,
     image: img5,

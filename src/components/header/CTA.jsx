@@ -1,5 +1,5 @@
 import React from "react";
-import CV from "../../assets/Ayan_Maiti_Overleaf_CV_v16.pdf";
+import CV from "../../assets/Ayan_Maiti_Overleaf_CV_v17.pdf";
 
 const CTA = ({ onOpenMoonmind }) => {
   return (
