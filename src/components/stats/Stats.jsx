@@ -6,7 +6,14 @@ import { FaHackerrank } from "react-icons/fa";
 import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
 import { BsStar } from "react-icons/bs";
 import { IoLogoGoogle } from "react-icons/io";
-import { SiEthereum, SiHiveBlockchain } from "react-icons/si";
+import {
+  SiEthereum,
+  SiHiveBlockchain,
+  SiOracle,
+  SiIbm,
+  SiTcs,
+  SiCoursera,
+} from "react-icons/si";
 import { RiGitRepositoryCommitsLine } from "react-icons/ri";
 import { VscAzure } from "react-icons/vsc";
 import axios from "axios";
@@ -344,12 +351,39 @@ const Stats = () => {
 
           <ul className="stat__list">
             <li>
-              <MdWorkOutline className="stat__list-icon-certificate intern" />
+              <SiOracle className="stat__list-icon-certificate oracle" />
               <a
-                href="https://drive.google.com/file/d/1BPcUwBleZGfb2CM5jZ7NM4MyX3EQo4Xg/view?usp=sharing"
+                href="https://drive.google.com/file/d/1s3i9218hfue91ELClDyhXQqNdj2c7YNG/view?usp=sharing"
                 target="_blank"
               >
-                Internship, W3 Dev Private Limited <FiExternalLink />
+                OCI - Gen AI Professional <FiExternalLink />
+              </a>
+            </li>
+            <li>
+              <SiTcs className="stat__list-icon-certificate tcs" />
+              <a
+                href="https://drive.google.com/file/d/1mVyzjpfoyj5GLRr0HvWYuOcyJW6e8-6V/view?usp=sharing"
+                target="_blank"
+              >
+                TCS AI Friday <FiExternalLink />
+              </a>
+            </li>
+            <li>
+              <SiCoursera className="stat__list-icon-certificate coursera" />
+              <a
+                href="https://drive.google.com/file/d/1wHW1TsoHb5if_-0FhLxyj6m0ZYOEDkWz/view?usp=sharing"
+                target="_blank"
+              >
+                Coursera + DeepLearningAI: RAG <FiExternalLink />
+              </a>
+            </li>
+            <li>
+              <SiIbm className="stat__list-icon-certificate ibm" />
+              <a
+                href="https://coursera.org/share/9289ae0ffdf337597952f42d48f48924"
+                target="_blank"
+              >
+                IBM, Gen AI for SDE <FiExternalLink />
               </a>
             </li>
             <li>
@@ -361,7 +395,15 @@ const Stats = () => {
                 Microsoft AZ-900 Certification <FiExternalLink />
               </a>
             </li>
-
+            <li>
+              <MdWorkOutline className="stat__list-icon-certificate intern" />
+              <a
+                href="https://drive.google.com/file/d/1BPcUwBleZGfb2CM5jZ7NM4MyX3EQo4Xg/view?usp=sharing"
+                target="_blank"
+              >
+                Internship, W3 Dev Private Limited <FiExternalLink />
+              </a>
+            </li>
             <li>
               <SiHiveBlockchain className="stat__list-icon-certificate block" />
               <a
@@ -380,7 +422,7 @@ const Stats = () => {
                 Google, Crash Course on Python <FiExternalLink />
               </a>
             </li>
-            <li>
+            {/* <li>
               <IoLogoGoogle className="stat__list-icon-certificate goog" />
               <a
                 href="https://drive.google.com/file/d/1es2hoYVWtfhLeZi0x6pYm9B4xHT2d2aL/view?usp=share_link"
@@ -406,7 +448,7 @@ const Stats = () => {
               >
                 Python Skill Assessment, HackerRank <FiExternalLink />
               </a>
-            </li>
+            </li>*/}
           </ul>
         </article>
         {/* END OF WEB3 */}
