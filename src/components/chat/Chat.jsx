@@ -11,7 +11,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./chat.css";
-import moonmindLogo from "../../assets/Gemini_Generated_Image_17lr8q17lr8q17lr_Resized.png";
+import moonmindLogo from "../../assets/Moonmind_minimalist.png";
 
 const { REACT_APP_PORTFOLIO_API_HOSTNAME, REACT_APP_PORTFOLIO_API_CHAT } =
   process.env;
