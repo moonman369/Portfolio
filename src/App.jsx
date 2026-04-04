@@ -25,7 +25,7 @@ const App = () => {
       <About />
       <Experience />
       <Stats />
-      <Portfolio />
+      <Portfolio onOpenMoonmind={() => setIsMoonmindOpen(true)} />
       <Testimonials />
       <Contact />
       <Footer />
